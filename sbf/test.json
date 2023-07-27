@@ -1,0 +1,25 @@
+{
+  "universal-songbook-format:songbook": {
+    "authors": [
+      {
+	"name": "Bob Dylan"
+      },
+      {
+	"name": "Robert Křesťan"
+      },
+      {
+	"name": "Karel Plíhal"
+      }
+    ],
+    "songs": [
+      {
+	"name": "Ještě jedno kafe",
+	"authors": [ "Robert Křesťan" ]
+      },
+      {
+	"name": "Kluziště",
+	"authors": [ "Karel Plíhal" ]
+      }
+    ]
+  }
+}

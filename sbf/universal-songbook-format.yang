@@ -1,0 +1,48 @@
+module universal-songbook-format {
+  yang-version "1";
+  namespace "http://yang.jmq.cz/universal-songbook-format";
+  prefix "sbf";
+
+  organization "SongBook working group";
+  contact
+    "Maria Matejka
+    mq@jmq.cz";
+  
+  description "Container for play-along and sing-along songbooks";
+
+  grouping songbook-grouping {
+    description "Top-level songbook structure";
+
+    list songs {
+      description "Top-level song structure";
+
+      key "name";
+
+      leaf name {
+	type string;
+	description "Name of the song";
+      }
+
+      leaf-list authors {
+	description "Author list";
+	type leafref {
+	  path "../../authors/name";
+	}
+      }
+    }
+
+    list authors {
+      description "Author object";
+      key "name";
+
+      leaf name {
+        type string;
+        description "Author name";
+      }
+    }
+  }
+
+  container songbook {
+    uses songbook-grouping;
+  }
+}

@@ -1,0 +1,19 @@
+<songbook xmlns="http://yang.jmq.cz/universal-songbook-format">
+  <songs>
+    <name>Ještě jedno kafe</name>
+    <authors>Robert Křesťan</authors>
+  </songs>
+  <songs>
+    <name>Kluziště</name>
+    <authors>Karel Plíhal</authors>
+  </songs>
+  <authors>
+    <name>Bob Dylan</name>
+  </authors>
+  <authors>
+    <name>Robert Křesťan</name>
+  </authors>
+  <authors>
+    <name>Karel Plíhal</name>
+  </authors>
+</songbook>
