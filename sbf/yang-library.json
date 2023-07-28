@@ -1,0 +1,13 @@
+{
+  "ietf-yang-library:modules-state": {
+    "module-set-id": "0853f0745dd1801cefd14622032c432fa598540e",
+    "module": [
+      {
+        "name": "universal-songbook-format",
+	"namespace": "http://yang.jmq.cz/universal-songbook-format",
+        "revision": "",
+        "conformance-type": "implement"
+      }
+    ]
+  }
+}
