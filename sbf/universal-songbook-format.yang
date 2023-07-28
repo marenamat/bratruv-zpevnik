@@ -10,12 +10,26 @@ module universal-songbook-format {
   
   description "Container for play-along and sing-along songbooks";
 
-  grouping line {
+  grouping segment {
     leaf key {
-      type uint32;
+      type int32;
     }
     leaf lyrics {
       type string;
+    }
+    leaf chord {
+      type string;
+    }
+  }
+
+  grouping line {
+    leaf key {
+      type int32;
+    }
+    list segments {
+      key "key";
+      uses segment;
+      ordered-by user;
     }
   }
 

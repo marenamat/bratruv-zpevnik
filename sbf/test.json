@@ -32,19 +32,63 @@
 	    "lines": [
 	      {
 		"key": 0,
-		"lyrics": "Rád chodím na poštu"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Rád chodím ",
+		    "chord": "F"
+		  },
+		  {
+		    "key": 1,
+		    "lyrics": "na poštu",
+		    "chord": "C"
+		  }
+		]
 	      },
 	      {
 		"key": 1,
-		"lyrics": "Nejsem tam jen do počtu"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Nejsem tam jen ",
+		    "chord": "Bb"
+		  },
+		  {
+		    "key": 1,
+		    "lyrics": "do počtu",
+		    "chord": "F"
+		  }
+		]
 	      },
 	      {
 		"key": 2,
-		"lyrics": "Jsem tam důležitý člen"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Jsem tam důle",
+		    "chord": "Bb"
+		  },
+		  {
+		    "key": 1,
+		    "lyrics": "žitý člen",
+		    "chord": "F"
+		  }
+		]
 	      },
 	      {
 		"key": 3,
-		"lyrics": "Fronty která trčí ven"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Fronty, která",
+		    "chord": "Gm"
+		  },
+		  {
+		    "key": 1,
+		    "lyrics": "trčí ven",
+		    "chord": "C7"
+		  }
+		]
 	      }
 	    ]
 	  },
@@ -53,19 +97,39 @@
 	    "lines": [
 	      {
 		"key": 4,
-		"lyrics": "Vždy když se cítím sám"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Vždy když se cítím sám"
+		  }
+		]
 	      },
 	      {
 		"key": 5,
-		"lyrics": "Rád na poštu zavítám"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Rád na poštu zavítám"
+		  }
+		]
 	      },
 	      {
 		"key": 6,
-		"lyrics": "Tam je tolik lidí, že"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Tam je tolik lidí, že"
+		  }
+		]
 	      },
 	      {
 		"key": 7,
-		"lyrics": "Pohnout se mám potíže"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Pohnout se mám potíže"
+		  }
+		]
 	      }
 	    ]
 	  },
@@ -74,19 +138,39 @@
 	    "lines": [
 	      {
 		"key": 0,
-		"lyrics": "A za přepážkou paní v letech má razítko gumové"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "A za přepážkou paní v letech má razítko gumové"
+		  }
+		]
 	      },
 	      {
 		"key": 1,
-		"lyrics": "A občas tiskne tiskárnou z dob první války světové"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "A občas tiskne tiskárnou z dob první války světové"
+		  }
+		]
 	      },
 	      {
 		"key": 2,
-		"lyrics": "Každému kdo spílá jí že zas na poště pros*al den"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Každému kdo spílá jí že zas na poště pros*al den"
+		  }
+		]
 	      },
 	      {
 		"key": 3,
-		"lyrics": "Nabídne los stírací ať uklidní se hazardem … já"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Nabídne los stírací ať uklidní se hazardem … já"
+		  }
+		]
 	      }
 	    ]
 	  },
@@ -103,27 +187,57 @@
 	    "lines": [
 	      {
 		"key": 0,
-		"lyrics": "A proč je vždy jen jedna z pěti přepážek otevřená"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "A proč je vždy jen jedna z pěti přepážek otevřená"
+		  }
+		]
 	      },
 	      {
 		"key": 1,
-		"lyrics": "Je záhada co navždy zůstat má tajemstvím zastřená"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Je záhada co navždy zůstat má tajemstvím zastřená"
+		  }
+		]
 	      },
 	      {
 		"key": 2,
-		"lyrics": "Má nejoblíbenější služba je balíček do ruky"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Má nejoblíbenější služba je balíček do ruky"
+		  }
+		]
 	      },
 	      {
 		"key": 3,
-		"lyrics": "Znamená to totiž že zas budu moct jít na poštu"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Znamená to totiž že zas budu moct jít na poštu"
+		  }
+		]
 	      },
 	      {
 		"key": 4,
-		"lyrics": "Jestli ho vůbec doručej"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Jestli ho vůbec doručej"
+		  }
+		]
 	      },
 	      {
 		"key": 5,
-		"lyrics": "To už je bez záruky … já"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "To už je bez záruky … já"
+		  }
+		]
 	      }
 	    ]
 	  },
@@ -136,19 +250,39 @@
 	    "lines": [
 	      {
 		"key": 0,
-		"lyrics": "Vždy když tam stepuju"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Vždy když tam stepuju"
+		  }
+		]
 	      },
 	      {
 		"key": 1,
-		"lyrics": "Tenhle song si notuju"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Tenhle song si notuju"
+		  }
+		]
 	      },
 	      {
 		"key": 2,
-		"lyrics": "Mám pak hnedka trochu míň"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Mám pak hnedka trochu míň"
+		  }
+		]
 	      },
 	      {
 		"key": 3,
-		"lyrics": "Chuť do mozku si vrazit klín"
+		"segments": [
+		  {
+		    "key": 0,
+		    "lyrics": "Chuť do mozku si vrazit klín"
+		  }
+		]
 	      }
 	    ]
 	  }
