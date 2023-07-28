@@ -10,6 +10,33 @@ module universal-songbook-format {
   
   description "Container for play-along and sing-along songbooks";
 
+  grouping line {
+    leaf key {
+      type uint32;
+    }
+    leaf lyrics {
+      type string;
+    }
+  }
+
+  grouping block {
+    leaf name {
+      type string;
+    }
+    choice lines {
+      leaf ref {
+	type leafref {
+	  path "../../blocks/name";
+	}
+      }
+      list lines {
+	key "key";
+	uses line;
+	ordered-by user;
+      }
+    }
+  }
+
   grouping songbook-grouping {
     description "Top-level songbook structure";
 
@@ -28,6 +55,12 @@ module universal-songbook-format {
 	type leafref {
 	  path "../../authors/name";
 	}
+      }
+
+      list blocks {
+	description "Named song blocks";
+	key "name";
+	uses block;
       }
     }
 
