@@ -2,291 +2,299 @@
   "universal-songbook-format:songbook": {
     "authors": [
       {
-	"name": "Bob Dylan"
+        "name": "Bob Dylan"
       },
       {
-	"name": "Robert Křesťan"
+        "name": "Robert Křesťan"
       },
       {
-	"name": "Karel Plíhal"
+        "name": "Karel Plíhal"
       },
       {
-	"name": "Pokáč"
+        "name": "Pokáč"
       }
     ],
     "songs": [
       {
-	"name": "Ještě jedno kafe",
-	"authors": [ "Robert Křesťan" ]
+        "name": "Ještě jedno kafe",
+        "authors": [
+          "Robert Křesťan"
+        ],
+        "blocks": []
       },
       {
-	"name": "Kluziště",
-	"authors": [ "Karel Plíhal" ]
+        "name": "Kluziště",
+        "authors": [
+          "Karel Plíhal"
+        ],
+        "blocks": []
       },
       {
-	"name": "Rád chodím na poštu",
-	"authors": [ "Pokáč" ],
-	"blocks": [
-	  {
-	    "name": "R.",
-	    "lines": [
-	      {
-		"key": 0,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Rád chodím ",
-		    "chord": "F"
-		  },
-		  {
-		    "key": 1,
-		    "lyrics": "na poštu",
-		    "chord": "C"
-		  }
-		]
-	      },
-	      {
-		"key": 1,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Nejsem tam jen ",
-		    "chord": "Bb"
-		  },
-		  {
-		    "key": 1,
-		    "lyrics": "do počtu",
-		    "chord": "F"
-		  }
-		]
-	      },
-	      {
-		"key": 2,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Jsem tam důle",
-		    "chord": "Bb"
-		  },
-		  {
-		    "key": 1,
-		    "lyrics": "žitý člen",
-		    "chord": "F"
-		  }
-		]
-	      },
-	      {
-		"key": 3,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Fronty, která",
-		    "chord": "Gm"
-		  },
-		  {
-		    "key": 1,
-		    "lyrics": "trčí ven",
-		    "chord": "C7"
-		  }
-		]
-	      }
-	    ]
-	  },
-	  {
-	    "name": "_R1x",
-	    "lines": [
-	      {
-		"key": 4,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Vždy když se cítím sám"
-		  }
-		]
-	      },
-	      {
-		"key": 5,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Rád na poštu zavítám"
-		  }
-		]
-	      },
-	      {
-		"key": 6,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Tam je tolik lidí, že"
-		  }
-		]
-	      },
-	      {
-		"key": 7,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Pohnout se mám potíže"
-		  }
-		]
-	      }
-	    ]
-	  },
-	  {
-	    "name": "1.",
-	    "lines": [
-	      {
-		"key": 0,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "A za přepážkou paní v letech má razítko gumové"
-		  }
-		]
-	      },
-	      {
-		"key": 1,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "A občas tiskne tiskárnou z dob první války světové"
-		  }
-		]
-	      },
-	      {
-		"key": 2,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Každému kdo spílá jí že zas na poště pros*al den"
-		  }
-		]
-	      },
-	      {
-		"key": 3,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Nabídne los stírací ať uklidní se hazardem … já"
-		  }
-		]
-	      }
-	    ]
-	  },
-	  {
-	    "name": "_R1",
-	    "ref": "R."
-	  },
-	  {
-	    "name": "_R1x1",
-	    "ref": "_R1x"
-	  },
-	  {
-	    "name": "2.",
-	    "lines": [
-	      {
-		"key": 0,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "A proč je vždy jen jedna z pěti přepážek otevřená"
-		  }
-		]
-	      },
-	      {
-		"key": 1,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Je záhada co navždy zůstat má tajemstvím zastřená"
-		  }
-		]
-	      },
-	      {
-		"key": 2,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Má nejoblíbenější služba je balíček do ruky"
-		  }
-		]
-	      },
-	      {
-		"key": 3,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Znamená to totiž že zas budu moct jít na poštu"
-		  }
-		]
-	      },
-	      {
-		"key": 4,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Jestli ho vůbec doručej"
-		  }
-		]
-	      },
-	      {
-		"key": 5,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "To už je bez záruky … já"
-		  }
-		]
-	      }
-	    ]
-	  },
-	  {
-	    "name": "_R2",
-	    "ref": "R."
-	  },
-	  {
-	    "name": "_Routro",
-	    "lines": [
-	      {
-		"key": 0,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Vždy když tam stepuju"
-		  }
-		]
-	      },
-	      {
-		"key": 1,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Tenhle song si notuju"
-		  }
-		]
-	      },
-	      {
-		"key": 2,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Mám pak hnedka trochu míň"
-		  }
-		]
-	      },
-	      {
-		"key": 3,
-		"segments": [
-		  {
-		    "key": 0,
-		    "lyrics": "Chuť do mozku si vrazit klín"
-		  }
-		]
-	      }
-	    ]
-	  }
-	]
+        "name": "Rád chodím na poštu",
+        "authors": [
+          "Pokáč"
+        ],
+        "blocks": [
+          {
+            "name": "R.",
+            "lines": [
+              {
+                "key": 0,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Rád chodím ",
+                    "chord": "F"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "na poštu",
+                    "chord": "C"
+                  }
+                ]
+              },
+              {
+                "key": 1,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Nejsem tam jen ",
+                    "chord": "Bb"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "do počtu",
+                    "chord": "F"
+                  }
+                ]
+              },
+              {
+                "key": 2,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Jsem tam důle",
+                    "chord": "Bb"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "žitý člen",
+                    "chord": "F"
+                  }
+                ]
+              },
+              {
+                "key": 3,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Fronty, která",
+                    "chord": "Gm"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "trčí ven",
+                    "chord": "C7"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "_R1x",
+            "lines": [
+              {
+                "key": 4,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Vždy když se cítím sám"
+                  }
+                ]
+              },
+              {
+                "key": 5,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Rád na poštu zavítám"
+                  }
+                ]
+              },
+              {
+                "key": 6,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Tam je tolik lidí, že"
+                  }
+                ]
+              },
+              {
+                "key": 7,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Pohnout se mám potíže"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "1.",
+            "lines": [
+              {
+                "key": 0,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "A za přepážkou paní v letech má razítko gumové"
+                  }
+                ]
+              },
+              {
+                "key": 1,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "A občas tiskne tiskárnou z dob první války světové"
+                  }
+                ]
+              },
+              {
+                "key": 2,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Každému kdo spílá jí že zas na poště pros*al den"
+                  }
+                ]
+              },
+              {
+                "key": 3,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Nabídne los stírací ať uklidní se hazardem … já"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "_R1",
+            "ref": "R."
+          },
+          {
+            "name": "_R1x1",
+            "ref": "_R1x"
+          },
+          {
+            "name": "2.",
+            "lines": [
+              {
+                "key": 0,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "A proč je vždy jen jedna z pěti přepážek otevřená"
+                  }
+                ]
+              },
+              {
+                "key": 1,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Je záhada co navždy zůstat má tajemstvím zastřená"
+                  }
+                ]
+              },
+              {
+                "key": 2,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Má nejoblíbenější služba je balíček do ruky"
+                  }
+                ]
+              },
+              {
+                "key": 3,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Znamená to totiž že zas budu moct jít na poštu"
+                  }
+                ]
+              },
+              {
+                "key": 4,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Jestli ho vůbec doručej"
+                  }
+                ]
+              },
+              {
+                "key": 5,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "To už je bez záruky … já"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "_R2",
+            "ref": "R."
+          },
+          {
+            "name": "_Routro",
+            "lines": [
+              {
+                "key": 0,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Vždy když tam stepuju"
+                  }
+                ]
+              },
+              {
+                "key": 1,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Tenhle song si notuju"
+                  }
+                ]
+              },
+              {
+                "key": 2,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Mám pak hnedka trochu míň"
+                  }
+                ]
+              },
+              {
+                "key": 3,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "Chuť do mozku si vrazit klín"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }

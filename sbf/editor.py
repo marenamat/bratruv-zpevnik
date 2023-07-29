@@ -26,10 +26,27 @@ class SongBlock:
     def __init__(self, data):
         self.name = str(data["name"])
 
+    def json(self):
+        return {
+                "name": self.name
+                }
+
 class SongBlockRef(SongBlock):
     def __init__(self, data):
         super().__init__(data)
         self.ref = str(data["ref"])
+
+
+    def cleanup(self, song):
+        if self.ref not in song.blocknames:
+            raise Exception(f"Unresolvable block {self.name} reference {self.ref}, available {song.blocknames}")
+
+    def json(self):
+        return {
+                **super().json(),
+                "ref": self.ref,
+                }
+
 
 class SongBlockEmpty(SongBlock):
     def __init__(self):
@@ -37,31 +54,76 @@ class SongBlockEmpty(SongBlock):
 
 class SongBlockSegment:
     def __init__(self, data):
-        self.key = str(data["key"]) if "key" in data else None
+        self.key = data["key"].value if "key" in data else None
         self.lyrics = str(data["lyrics"]) if "lyrics" in data else None
         self.chord = str(data["chord"]) if "chord" in data else None
 
+    def json(self):
+        data = {
+                "key": self.key,
+                }
+
+        if self.lyrics is not None:
+            data["lyrics"] = self.lyrics
+
+        if self.chord is not None:
+            data["chord"] = self.chord
+
+        return data
+
+
 class SongBlockLine:
     def __init__(self, data):
-        self.key = str(data["key"]) if "key" in data else None
+        self.key = data["key"].value if "key" in data else None
         self.segments = [ SongBlockSegment(d) for d in data["segments"] ]
+
+    def cleanup(self):
+        keys = {}
+        for s in self.segments:
+            while s.key in keys:
+                s.key += 1
+            keys[s.key] = True
+
+    def json(self):
+        return {
+                "key": self.key,
+                "segments": [ s.json() for s in self.segments ],
+                }
 
 class SongBlockContents(SongBlock):
     def __init__(self, data):
         super().__init__(data)
         self.lines = [ SongBlockLine(d) for d in data["lines"] ]
 
+    def cleanup(self, _):
+        keys = {}
+        for i in self.lines:
+            while i.key in keys:
+                i.key += 1
+            keys[i.key] = True
+            i.cleanup()
+
+    def json(self):
+        return {
+                **super().json(),
+                "lines": [ i.json() for i in self.lines ],
+                }
+
 class Song:
-    def __init__(self, data):
+    def __init__(self, songbook, data):
         self.data = data
         self.title = str(data["name"])
-        self.authors = [ str(a) for a in data["authors"] ]
+        self.authors = [ songbook.author_index[str(a)] for a in data["authors"] ]
         self.blocks = [
                 SongBlockRef(d) if "ref" in d else SongBlockContents(d)
                 for d in data["blocks"]
                 ] if "blocks" in data else []
 
         self.blockindex = { d.name: d for d in self.blocks }
+
+
+    def displayAuthorList(self):
+        return ", ".join([ a.name for a in self.authors ])
 
     def insert(self, after, block):
         index = self.blocks.index(after) if after is not None else 0
@@ -73,23 +135,66 @@ class Song:
 
     def cleanup(self):
         self.blocks = [ b for b in self.blocks if type(b) is not SongBlockEmpty ]
+        self.blocknames = {}
+
+        cnt = 0
+        for b in self.blocks:
+            if b.name == "":
+                while (bn := f"_ab_{cnt}") in self.blocknames:
+                    cnt += 1
+                b.name = bn
+
+            if b.name in self.blocknames:
+                raise Exception("Multiple blocks with the same name")
+            self.blocknames[b.name] = b
+
+        for b in self.blocks:
+            b.cleanup(self)
+
+    def json(self):
+        return {
+                "name": self.title,
+                "authors": [ a.name for a in self.authors ],
+                "blocks": [ b.json() for b in self.blocks ],
+                }
+
+
+class Author:
+    def __init__(self, data):
+        self.name = str(data["name"])
+
+    def json(self):
+        return { "name": self.name }
 
 class SongBook:
     def __init__(self, filename):
-        self.dm = DataModel.from_file('yang-library.json')
-
-        with open(filename) as sf:
+        self.filename = filename
+        with open(self.filename) as sf:
             sfraw = json.load(sf)
 
+        self.dm = DataModel.from_file('yang-library.json')
         self.data = self.dm.from_raw(sfraw)
         self.data.validate()
 
-        self.load_songs()
+        songbook_path = self.dm.parse_resource_id('/universal-songbook-format:songbook')
+        songbook_data = self.data.goto(songbook_path)
 
-    def load_songs(self):
-        songs_path = self.dm.parse_resource_id('/universal-songbook-format:songbook/songs')
-        songs_data = self.data.goto(songs_path)
-        self.songs = [ Song(d) for d in songs_data ]
+        self.authors = [ Author(a) for a in songbook_data["authors"] ]
+        self.author_index = { a.name: a for a in self.authors }
+
+        self.songs = [ Song(self, d) for d in songbook_data["songs"] ]
+
+    def json(self):
+        return {
+                "universal-songbook-format:songbook": {
+                    "authors": [ a.json() for a in self.authors ],
+                    "songs": [ s.json() for s in self.songs ],
+                    }
+                }
+
+    def save(self):
+        with open(self.filename, "w") as sf:
+            json.dump(self.json(), sf, indent=2, ensure_ascii=False)
 
 class SongListModel(QAbstractTableModel):
     def __init__(self, sb):
@@ -117,7 +222,7 @@ class SongListModel(QAbstractTableModel):
     data_dispatcher = {
                 Qt.DisplayRole: lambda self, index: {
                     0: self.sb.songs[index.row()].title,
-                    1: ", ".join(self.sb.songs[index.row()].authors)
+                    1: self.sb.songs[index.row()].displayAuthorList(),
                     }[index.column()],
                 }
 
@@ -272,7 +377,7 @@ class SongEditor(QWidget):
         self.title.setAlignment(Qt.AlignBaseline | Qt.AlignCenter)
         self.layout.addWidget(self.title)
 
-        self.author = QLabel(", ".join(self.song.authors))
+        self.author = QLabel(self.song.displayAuthorList())
         self.author.setAlignment(Qt.AlignBaseline | Qt.AlignCenter)
         self.layout.addWidget(self.author)
 
@@ -314,11 +419,21 @@ class InitialLayout(QSplitter):
 
         self.sb = sb
 
+        self.leftPanel = QWidget()
+        self.leftPanelLayout = QVBoxLayout(self.leftPanel)
+
         self.songlist = SongListView()
         self.songlist.setModel(SongListModel(sb))
         self.songlist.selectedSong.connect(self.changeSong)
 
-        self.addWidget(self.songlist)
+        self.leftPanelLayout.addWidget(self.songlist)
+
+        self.saveButton = QPushButton("Save")
+        self.saveButton.clicked.connect(self.saveSongs)
+
+        self.leftPanelLayout.addWidget(self.saveButton)
+
+        self.addWidget(self.leftPanel)
 
         self.songeditor = SongEditor()
         self.songeditorScroll = QScrollArea()
@@ -331,6 +446,14 @@ class InitialLayout(QSplitter):
     @Slot(int)
     def changeSong(self, idx):
         self.songeditor.setSong(self.sb.songs[idx])
+
+    @Slot(bool)
+    def saveSongs(self, _):
+        if self.songeditor.song:
+            self.songeditor.song.cleanup()
+            self.songeditor.updateLayout()
+
+        self.sb.save()
 
 class MainWindow(QMainWindow):
     def __init__(self):
