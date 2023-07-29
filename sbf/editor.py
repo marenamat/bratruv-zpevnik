@@ -7,6 +7,7 @@ from qtpy.QtWidgets import (
         QApplication, QFrame, QLabel, QMainWindow,
         QPushButton, QHBoxLayout, QVBoxLayout, QWidget,
         QTableView, QSplitter, QTextEdit, QLineEdit,
+        QGridLayout, QLayout, QScrollArea,
         )
 #from qtpy.QtGui import (
 #        )
@@ -23,32 +24,55 @@ def TODO(*args):
 
 class SongBlock:
     def __init__(self, data):
-        self.name = data["name"]
+        self.name = str(data["name"])
 
 class SongBlockRef(SongBlock):
     def __init__(self, data):
         super().__init__(data)
-        self.ref = data["ref"]
+        self.ref = str(data["ref"])
+
+class SongBlockEmpty(SongBlock):
+    def __init__(self):
+        super().__init__({"name": ""})
+
+class SongBlockSegment:
+    def __init__(self, data):
+        self.key = str(data["key"]) if "key" in data else None
+        self.lyrics = str(data["lyrics"]) if "lyrics" in data else None
+        self.chord = str(data["chord"]) if "chord" in data else None
+
+class SongBlockLine:
+    def __init__(self, data):
+        self.key = str(data["key"]) if "key" in data else None
+        self.segments = [ SongBlockSegment(d) for d in data["segments"] ]
 
 class SongBlockContents(SongBlock):
-    def __init__(self, data=None):
-        if data is None:
-            super().__init__({ "name": "" })
-        else:
-            super().__init__(data)
-        TODO("SongBlockContents init")
+    def __init__(self, data):
+        super().__init__(data)
+        self.lines = [ SongBlockLine(d) for d in data["lines"] ]
 
 class Song:
     def __init__(self, data):
         self.data = data
-        self.title = data["name"].value
-        self.authors = data["authors"].value
+        self.title = str(data["name"])
+        self.authors = [ str(a) for a in data["authors"] ]
         self.blocks = [
                 SongBlockRef(d) if "ref" in d else SongBlockContents(d)
                 for d in data["blocks"]
                 ] if "blocks" in data else []
 
         self.blockindex = { d.name: d for d in self.blocks }
+
+    def insert(self, after, block):
+        index = self.blocks.index(after) if after is not None else 0
+        self.blocks = self.blocks[:index] + [block] + self.blocks[index:]
+
+    def replace(self, old, new):
+        index = self.blocks.index(old)
+        self.blocks = self.blocks[:index] + new + self.blocks[index+1:]
+
+    def cleanup(self):
+        self.blocks = [ b for b in self.blocks if type(b) is not SongBlockEmpty ]
 
 class SongBook:
     def __init__(self, filename):
@@ -127,14 +151,10 @@ class SongBlockNameEditor(QLineEdit):
 
     def sizeHint(self):
         h = super().sizeHint()
-        return QSize(h.height() * 4, h.height())
+        self.setFixedWidth(h.height() * 2)
+        return QSize(h.height() * 2, h.height())
 
-class SongBlockContentsEditor(QTextEdit):
-    def __init__(self, block):
-        super().__init__()
-        self.block = block
-
-class SongBlockEditor(QWidget):
+class SongBlockAbstractEditor(QWidget):
     def __init__(self, block):
         super().__init__()
         self.block = block
@@ -142,13 +162,95 @@ class SongBlockEditor(QWidget):
         self.layout = QHBoxLayout(self)
 
         self.blockName = SongBlockNameEditor(block.name)
-        self.layout.addWidget(self.blockName, alignment=Qt.AlignTop)
+        self.layout.addWidget(self.blockName)
 
-        self.editor = {
-                SongBlockRef: lambda b: SongBlockRefEditor(b),
-                SongBlockContents: lambda b: SongBlockContentsEditor(b),
-                }[type(self.block)](self.block)
-        self.layout.addWidget(self.editor)
+    blockUpdated = Signal(list)
+
+class SongBlockEmptyEditor(SongBlockAbstractEditor):
+    def __init__(self, block):
+        super().__init__(block)
+
+        self.text = QTextEdit()
+        self.layout.addWidget(self.text)
+
+        self.normalizeButton = QPushButton("Normalize")
+        self.normalizeButton.clicked.connect(self.normalize)
+        self.layout.addWidget(self.normalizeButton)
+
+    @Slot(bool)
+    def normalize(self, _):
+        lines = self.text.toPlainText().split("\n")
+        self.blockUpdated.emit([SongBlockContents({
+            "name": self.blockName.text(),
+            "lines": [{ "segments": [{ "lyrics": i }]} for i in lines ],
+            })])
+
+class SongBlockLineEditor(QWidget):
+    ordering = [
+            "chord",
+            "lyrics",
+            ]
+
+    class CompleteException(Exception):
+        pass
+
+    def __init__(self, line):
+        super().__init__()
+
+        has = {}
+        try:
+            for s in line.segments:
+                for o in self.ordering:
+                    if o not in has and getattr(s, o) is not None:
+                        has[o] = None
+                        if len(has) == len(self.ordering):
+                            raise self.CompleteException()
+        except self.CompleteException as e:
+            pass
+
+        idx = 0
+        for o in self.ordering:
+            if o in has:
+                has[o] = idx
+                idx += 1
+
+        self.layout = QGridLayout(self)
+        self.layout.setContentsMargins(0,3,0,3)
+        self.layout.setSizeConstraint(QLayout.SetNoConstraint)
+        self.layout.setVerticalSpacing(1)
+        self.layout.setHorizontalSpacing(1)
+
+        self.children = []
+
+        for idx, s in enumerate(line.segments):
+            for o in self.ordering:
+                if o in has and hasattr(s, o):
+                    self.layout.addWidget(le := QLineEdit(getattr(s, o)), has[o], idx)
+                    self.children.append(le)
+
+class SongBlockContentsEditor(SongBlockAbstractEditor):
+    def __init__(self, block):
+        super().__init__(block)
+
+        self.lines = QWidget()
+        self.layout.addWidget(self.lines)
+        self.layout.setSizeConstraint(QLayout.SetNoConstraint)
+
+        self.linesLayout = QVBoxLayout(self.lines)
+        self.linesLayout.setSpacing(0)
+        self.linesLayout.setSizeConstraint(QLayout.SetNoConstraint)
+
+        for i in block.lines:
+            self.linesLayout.addWidget(SongBlockLineEditor(i))
+            self.linesLayout.addStrut(40)
+
+#            self.linesLayout.addWidget(QLabel("bagr"))
+
+        self.linesLayout.addStretch(1)
+
+class SongBlockRefEditor(SongBlockAbstractEditor):
+    def __init__(self, block):
+        super().__init__(block)
 
 class SongEditor(QWidget):
     def __init__(self):
@@ -174,20 +276,37 @@ class SongEditor(QWidget):
         self.author.setAlignment(Qt.AlignBaseline | Qt.AlignCenter)
         self.layout.addWidget(self.author)
 
-        if len(self.song.blocks) > 0:
-            TODO("SongEditor: display existing blocks")
-        else:
-            self.layout.addWidget(SongBlockEditor(SongBlockContents()))
+        if len(self.song.blocks) == 0:
+            self.song.insert(None, SongBlockEmpty())
 
-        self.layout.addStretch(1)
+        for b in self.song.blocks:
+            self.layout.addWidget(be := {
+                SongBlockRef: lambda b: SongBlockRefEditor(b),
+                SongBlockContents: lambda b: SongBlockContentsEditor(b),
+                SongBlockEmpty: lambda b: SongBlockEmptyEditor(b),
+                }[type(b)](b))
+            be.blockUpdated.connect(self.blockUpdated(b))
+
+        self.updateGeometry()
 
     def setSong(self, song):
         if song is self.song:
             return
 
+        # Clean up old song
+        if self.song is not None:
+            TODO("Song saving!")
+            self.song.cleanup()
+
         self.song = song
         self.updateLayout()
 
+    def blockUpdated(self, block):
+        def inner(replacement):
+            self.song.replace(block, replacement)
+            self.updateLayout()
+
+        return inner
 
 class InitialLayout(QSplitter):
     def __init__(self, sb):
@@ -202,11 +321,15 @@ class InitialLayout(QSplitter):
         self.addWidget(self.songlist)
 
         self.songeditor = SongEditor()
-        self.addWidget(self.songeditor)
+        self.songeditorScroll = QScrollArea()
+        self.songeditorScroll.setWidget(self.songeditor)
+        self.songeditorScroll.setWidgetResizable(True)
+        self.addWidget(self.songeditorScroll)
+
+        self.setSizes([100, 200])
 
     @Slot(int)
     def changeSong(self, idx):
-        print(f"Change song event: {idx}")
         self.songeditor.setSong(self.sb.songs[idx])
 
 class MainWindow(QMainWindow):
