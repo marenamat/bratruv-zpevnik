@@ -77,20 +77,47 @@
                 ]
               },
               {
-                "key": 2,
+                "key": 1,
                 "segments": [
                   {
-                    "key": 0,
-                    "lyrics": "    C     Emi7/H Ami7 C/G    Fmaj7  C     Fmaj7 G"
-                  }
-                ]
-              },
-              {
-                "key": 3,
-                "segments": [
+                    "key": 1,
+                    "lyrics": "jednu ",
+                    "chord": "C     "
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "   jednu malou kapku deště, ta mu spadla pod nohy,"
+                    "key": 2,
+                    "lyrics": "malou ",
+                    "chord": "Emi7/H "
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": " kapku ",
+                    "chord": "Ami7 "
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": "deště, ",
+                    "chord": "C/G    "
+                  },
+                  {
+                    "key": 5,
+                    "lyrics": " ta mu ",
+                    "chord": "Fmaj7  "
+                  },
+                  {
+                    "key": 6,
+                    "lyrics": "spadla ",
+                    "chord": "C     "
+                  },
+                  {
+                    "key": 7,
+                    "lyrics": "pod no",
+                    "chord": "Fmaj7 "
+                  },
+                  {
+                    "key": 8,
+                    "lyrics": "hy,",
+                    "chord": "G"
                   }
                 ]
               },
@@ -129,7 +156,12 @@
                     "lyrics": "   pak přitáhl kovadlinu a obrovský kladivo."
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "name": "_ab_1",
+            "lines": [
               {
                 "key": 9,
                 "segments": [

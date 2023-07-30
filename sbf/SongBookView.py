@@ -128,17 +128,17 @@ class SongBlockLineEditor(QWidget):
 
     def showContextMenu(self, pos):
         print("scm", pos)
-        menu = QMenu("foo foo", self.editor)
+        menu = QMenu()
 
-        acPrep = QAction("Prepend segment", self)
+        acPrep = QAction("Prepend segment")
         acPrep.triggered.connect(lambda _: self.editor.model().insertColumn(self.editor.indexAt(pos).column()))
         menu.addAction(acPrep)
 
-        acApp = QAction("Append segment", self)
+        acApp = QAction("Append segment")
         acApp.triggered.connect(lambda _: self.editor.model().insertColumn(self.editor.indexAt(pos).column()+1))
         menu.addAction(acApp)
 
-        acDel = QAction("Delete segment", self)
+        acDel = QAction("Delete segment")
         acDel.triggered.connect(lambda _: self.editor.model().removeColumn(self.editor.indexAt(pos).column()))
         menu.addAction(acDel)
         menu.exec(self.editor.mapToGlobal(pos))
@@ -189,6 +189,31 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
 
         self.linesLayout.addStretch(1)
 
+        self.lines.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.lines.customContextMenuRequested.connect(self.showContextMenu)
+
+    def showContextMenu(self, pos):
+        print("pos", pos)
+        prevheight = self.lineEditors[0].size().height()
+
+        for le in self.lineEditors[1:]:
+            y = le.pos().y()
+            h = le.size().height()
+            if y + h / 3 >= pos.y() >= y - prevheight / 3:
+                print("before line ", le.line)
+                menu = QMenu()
+
+                # This action destroys this view
+                acSplit = QAction("Split block")
+                acSplit.triggered.connect(self.splitBlock(le.line))
+                menu.addAction(acSplit)
+
+                menu.exec(self.lines.mapToGlobal(pos))
+                return
+
+            else:
+                prevheight = h
+
     def deleteLine(self, line):
         def inner():
             self.block.deleteLine(line)
@@ -199,6 +224,11 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
         def inner():
             self.block.mergeLinesAsChords(lyrics, chords)
             self.createEditor()
+        return inner
+
+    def splitBlock(self, before):
+        def inner():
+            self.blockUpdated.emit(self.block.split(before))
         return inner
 
 class SongBlockRefChooser(QComboBox):

@@ -30,7 +30,7 @@ Needs `yangson` to run, install by `pip`.
 ### High
 - Webapp: read JSON directly
 - Webapp: chorus unfolding
-- Editor: split block between lines, join blocks
+- Editor: join blocks, save block names
 - TeX export
 
 ### Mid

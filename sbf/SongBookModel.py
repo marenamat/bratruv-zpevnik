@@ -184,7 +184,7 @@ class SongBlockLine:
 class SongBlockContents(SongBlock):
     def __init__(self, data):
         super().__init__(data)
-        self.lines = [ SongBlockLine(d) for d in data["lines"] ]
+        self.lines = [ d if type(d) is SongBlockLine else SongBlockLine(d) for d in data["lines"] ]
 
     def cleanup(self, _):
         keys = {}
@@ -198,6 +198,19 @@ class SongBlockContents(SongBlock):
 
     def deleteLine(self, line):
         self.lines.remove(line)
+
+    def split(self, before):
+        idx = self.lines.index(before)
+        return [
+                SongBlockContents({
+                    "name": self.name,
+                    "lines": self.lines[:idx],
+                    }),
+                SongBlockContents({
+                    "name": "",
+                    "lines": self.lines[idx:],
+                    }),
+                ]
 
     def mergeLinesAsChords(self, lyrics, chords):
         if len(chords.segments) == 1 and len(lyrics.segments) == 1:
