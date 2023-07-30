@@ -95,17 +95,27 @@ class SongBlockLineEditor(QWidget):
         self.editor.setModel(line.model())
         self.editor.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.editor.horizontalHeader().hide()
+        self.editor.model().modelReset.connect(self.resetSizes)
+        self.editor.model().dataChanged.connect(self.resetSizes)
         self.layout.addWidget(self.editor)
 
-        ehsbsz = self.editor.horizontalScrollBar().sizeHint()
+        self.resetSizes()
 
+        if "chord" not in self.editor.model().has:
+            self.addChordsButton = QPushButton("Add Chords")
+            self.addChordsButton.setFixedWidth(int(self.addChordsButton.sizeHint().height() * 4.5))
+            self.addChordsButton.clicked.connect(self.addChordsButtonClicked)
+            self.layout.addWidget(self.addChordsButton)
+
+    def addChordsButtonClicked(self, _):
+        self.editor.model().addChords()
+
+    def resetSizes(self, *args):
+        ehsbsz = self.editor.horizontalScrollBar().sizeHint()
         self.editor.resizeColumnsToContents()
         self.editor.resizeRowsToContents()
         self.editor.setFixedHeight(self.editor.sizeHint().height() - ehsbsz.height())
 
-        if "chord" not in self.editor.model().has:
-            self.layout.addWidget(addChordsButton := QPushButton("Add Chords"))
-            addChordsButton.setFixedWidth(int(addChordsButton.sizeHint().height() * 4.5))
 
 class SongBlockContentsEditor(SongBlockAbstractEditor):
     def __init__(self, block):

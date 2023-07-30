@@ -407,7 +407,8 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Vždy když se cítím sám"
+                    "lyrics": "Vždy když se cítím sám",
+                    "chord": "F"
                   }
                 ]
               },

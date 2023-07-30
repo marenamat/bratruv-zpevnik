@@ -94,6 +94,13 @@ class SongBlockLineModel(QAbstractTableModel):
     def isLyricsOnly(self):
         return len(self.has) == 1 and "lyrics" in self.has
 
+    def addChords(self):
+        assert("chord" not in self.has)
+        self.beginResetModel()
+        self.line.segments[0].chord = ""
+        self.scanLine()
+        self.endResetModel()
+
     def rowCount(self, _):
         return len(self.has)
 
