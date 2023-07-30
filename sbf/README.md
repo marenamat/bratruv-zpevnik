@@ -16,5 +16,33 @@ than a simple songbook display.
 ## Structure
 
 Universal SongBook Format is a container described by YANG, thus freely
-convertible between JSON, XML and CBOR.
+convertible between JSON, XML and CBOR. See `universal-songbook-format.yang`.
 
+## Editor
+
+Needs `yangson` to run, install by `pip`.
+
+## TODO
+
+### Critical
+- TeX import
+
+### High
+- Webapp: read JSON directly
+- Webapp: chorus unfolding
+- Editor: add-chords button
+- TeX export
+
+### Mid
+- More automatics in TeX
+- Time signature, tempo, segment timing
+- Webapp: run, autoscroll, show current segment
+- Tabulatures
+- Melodies
+
+### Low
+- Webapp: favourites
+- Webapp: create PDF from my favourites
+- Webapp: synchronized play-sing-along between multiple sessions
+- Editor: undo feature
+- Editor: File open / save-as dialog
