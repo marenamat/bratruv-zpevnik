@@ -6,19 +6,20 @@ from qtpy.QtCore import (
         )
 
 from qtpy.QtWidgets import (
-        QLabel,
-        QPushButton,
+        QAbstractScrollArea,
+        QComboBox,
+        QGridLayout,
         QHBoxLayout,
+        QLabel,
+        QLayout,
+        QLineEdit,
+        QPushButton,
+        QScrollArea,
+        QSplitter,
+        QTableView,
+        QTextEdit,
         QVBoxLayout,
         QWidget,
-        QTableView,
-        QSplitter,
-        QTextEdit,
-        QLineEdit,
-        QGridLayout,
-        QLayout,
-        QScrollArea,
-        QComboBox,
         )
 
 from SongBookModel import SongBlockEmpty, SongBlockRef, SongBlockContents
@@ -79,54 +80,30 @@ class SongBlockEmptyEditor(SongBlockAbstractEditor):
             })])
 
 class SongBlockLineEditor(QWidget):
-    ordering = [
-            "chord",
-            "lyrics",
-            ]
-
-    class CompleteException(Exception):
-        pass
-
     def __init__(self, line):
         super().__init__()
 
-        has = {}
-        try:
-            for s in line.segments:
-                for o in self.ordering:
-                    if o not in has and getattr(s, o) is not None:
-                        has[o] = None
-                        if len(has) == len(self.ordering):
-                            raise self.CompleteException()
-        except self.CompleteException as e:
-            pass
+        self.layout = QHBoxLayout(self)
+#        self.layout.setContentsMargins(0,3,0,3)
+#        self.layout.setSizeConstraint(QLayout.SetNoConstraint)
+#        self.layout.setVerticalSpacing(1)
+#        self.layout.setHorizontalSpacing(1)
 
-        idx = 0
-        for o in self.ordering:
-            if o in has:
-                has[o] = idx
-                idx += 1
+        self.editor = QTableView()
+        self.editor.setModel(line.model())
+        self.editor.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.editor.horizontalHeader().hide()
+        self.layout.addWidget(self.editor)
 
-        self.layout = QGridLayout(self)
-        self.layout.setContentsMargins(0,3,0,3)
-        self.layout.setSizeConstraint(QLayout.SetNoConstraint)
-        self.layout.setVerticalSpacing(1)
-        self.layout.setHorizontalSpacing(1)
+        ehsbsz = self.editor.horizontalScrollBar().sizeHint()
 
-        for o in self.ordering:
-            if o in has:
-                self.layout.addWidget(la := QLabel(o[:2]), has[o], 0)
+        self.editor.resizeColumnsToContents()
+        self.editor.resizeRowsToContents()
+        self.editor.setFixedHeight(self.editor.sizeHint().height() - ehsbsz.height())
 
-        for idx, s in enumerate(line.segments):
-            for o in self.ordering:
-                if o in has:
-                    val = getattr(s, o) if hasattr(s, o) else ""
-                    self.layout.addWidget(le := QLineEdit(val), has[o], idx+1)
-
-        if "chord" not in has:
-            self.layout.addWidget(
-                    addChordsButton := QPushButton("Add Chords"),
-                    has["lyrics"], len(line.segments)+1)
+        if "chord" not in self.editor.model().has:
+            self.layout.addWidget(addChordsButton := QPushButton("Add Chords"))
+            addChordsButton.setFixedWidth(int(addChordsButton.sizeHint().height() * 4.5))
 
 class SongBlockContentsEditor(SongBlockAbstractEditor):
     def __init__(self, block):
@@ -140,11 +117,12 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
         self.linesLayout.setSpacing(0)
         self.linesLayout.setSizeConstraint(QLayout.SetNoConstraint)
 
-        for i in block.lines:
-            self.linesLayout.addWidget(SongBlockLineEditor(i))
-            self.linesLayout.addStrut(40)
+        self.lineEditors = [ SongBlockLineEditor(i) for i in block.lines ]
+        self.lineMaxWidth = max([ le.sizeHint().width() for le in self.lineEditors ])
 
-#            self.linesLayout.addWidget(QLabel("bagr"))
+        for le in self.lineEditors:
+            self.linesLayout.addWidget(le)
+            le.editor.setFixedWidth(self.lineMaxWidth)
 
         self.linesLayout.addStretch(1)
 

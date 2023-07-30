@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(SongBookEditor(self.sb))
 
     def sizeHint(self):
-        return QSize(800, 600)
+        return QSize(1280, 1024)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

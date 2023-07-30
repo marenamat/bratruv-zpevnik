@@ -58,6 +58,66 @@ class SongBlockSegment:
 
         return data
 
+class SongBlockLineModel(QAbstractTableModel):
+    ordering = [
+            "chord",
+            "lyrics",
+            ]
+
+    class CompleteException(Exception):
+        pass
+
+    def scanLine(self):
+        self.has = {}
+        try:
+            for s in self.line.segments:
+                for o in self.ordering:
+                    if o not in self.has and getattr(s, o) is not None:
+                        self.has[o] = None
+                        if len(self.has) == len(self.ordering):
+                            raise self.CompleteException()
+        except self.CompleteException as e:
+            pass
+
+        self.has_idx = []
+        for o in self.ordering:
+            if o in self.has:
+                self.has[o] = len(self.has_idx)
+                self.has_idx.append(o)
+
+    def __init__(self, line):
+        super().__init__()
+        self.line = line
+        self.scanLine()
+
+    def rowCount(self, _):
+        return len(self.has)
+
+    def columnCount(self, _):
+        return len(self.line.segments)
+
+    def headerData(self, section, orientation, role):
+        if role != Qt.DisplayRole:
+            return QVariant()
+
+        if orientation == Qt.Horizontal:
+            return None
+
+        assert(orientation == Qt.Vertical)
+        return self.has_idx[section]
+
+    data_dispatcher = {
+            Qt.DisplayRole: lambda self, index: \
+                    getattr(self.line.segments[index.column()], self.has_idx[index.row()]) \
+                    if hasattr(self.line.segments[index.column()], self.has_idx[index.row()]) \
+                    else QVariant(),
+                    }
+
+    def data(self, index, role):
+        if role in self.data_dispatcher:
+            return self.data_dispatcher[role](self, index)
+        else:
+            return QVariant()
 
 class SongBlockLine:
     def __init__(self, data):
@@ -72,6 +132,9 @@ class SongBlockLine:
             while s.key in keys:
                 s.key += 1
             keys[s.key] = True
+
+    def model(self):
+        return SongBlockLineModel(self)
 
     def json(self):
         return {
