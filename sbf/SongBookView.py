@@ -7,12 +7,14 @@ from qtpy.QtCore import (
 
 from qtpy.QtWidgets import (
         QAbstractScrollArea,
+        QAction,
         QComboBox,
         QGridLayout,
         QHBoxLayout,
         QLabel,
         QLayout,
         QLineEdit,
+        QMenu,
         QPushButton,
         QScrollArea,
         QSplitter,
@@ -97,6 +99,12 @@ class SongBlockLineEditor(QWidget):
         self.editor.horizontalHeader().hide()
         self.editor.model().modelReset.connect(self.resetSizes)
         self.editor.model().dataChanged.connect(self.resetSizes)
+        self.editor.model().columnsInserted.connect(self.resetSizes)
+        self.editor.model().columnsRemoved.connect(self.resetSizes)
+
+        self.editor.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.editor.customContextMenuRequested.connect(self.showContextMenu)
+
         self.layout.addWidget(self.editor)
 
         self.resetSizes()
@@ -109,6 +117,8 @@ class SongBlockLineEditor(QWidget):
 
     def addChordsButtonClicked(self, _):
         self.editor.model().addChords()
+        self.layout.removeWidget(self.addChordsButton)
+        self.addChordsButton.deleteLater()
 
     def resetSizes(self, *args):
         ehsbsz = self.editor.horizontalScrollBar().sizeHint()
@@ -116,6 +126,22 @@ class SongBlockLineEditor(QWidget):
         self.editor.resizeRowsToContents()
         self.editor.setFixedHeight(self.editor.sizeHint().height() - ehsbsz.height())
 
+    def showContextMenu(self, pos):
+        print("scm", pos)
+        menu = QMenu("foo foo", self.editor)
+
+        acPrep = QAction("Prepend segment", self)
+        acPrep.triggered.connect(lambda _: self.editor.model().insertColumn(self.editor.indexAt(pos).column()))
+        menu.addAction(acPrep)
+
+        acApp = QAction("Append segment", self)
+        acApp.triggered.connect(lambda _: self.editor.model().insertColumn(self.editor.indexAt(pos).column()+1))
+        menu.addAction(acApp)
+
+        acDel = QAction("Delete segment", self)
+        acDel.triggered.connect(lambda _: self.editor.model().removeColumn(self.editor.indexAt(pos).column()))
+        menu.addAction(acDel)
+        menu.exec(self.editor.mapToGlobal(pos))
 
 class SongBlockContentsEditor(SongBlockAbstractEditor):
     def __init__(self, block):

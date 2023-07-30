@@ -101,6 +101,18 @@ class SongBlockLineModel(QAbstractTableModel):
         self.scanLine()
         self.endResetModel()
 
+    def insertColumns(self, pos, count, _):
+        self.beginInsertColumns(QModelIndex(), pos+1, pos+count)
+        self.line.segments[pos:pos] = [ SongBlockSegment({}) for _ in range(count) ]
+        self.endInsertColumns()
+        return True
+
+    def removeColumns(self, pos, count, _):
+        self.beginRemoveColumns(QModelIndex(), pos, pos+count-1)
+        self.line.segments[pos:pos+count] = []
+        self.endRemoveColumns()
+        return True
+
     def rowCount(self, _):
         return len(self.has)
 

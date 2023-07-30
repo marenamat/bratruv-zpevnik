@@ -35,11 +35,6 @@
                 "key": 0,
                 "segments": [
                   {
-                    "key": 0,
-                    "lyrics": "",
-                    "chord": "    "
-                  },
-                  {
                     "key": 1,
                     "lyrics": "Strejček ",
                     "chord": "C"
@@ -407,8 +402,13 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Vždy když se cítím sám",
+                    "lyrics": "Vždy, když se ",
                     "chord": "F"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "cítím sám",
+                    "chord": "C"
                   }
                 ]
               },
@@ -417,7 +417,13 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Rád na poštu zavítám"
+                    "lyrics": "Rád na poštu ",
+                    "chord": "Bb"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "zavítám",
+                    "chord": "F"
                   }
                 ]
               },
@@ -426,7 +432,13 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Tam je tolik lidí, že"
+                    "lyrics": "Tam je tolik ",
+                    "chord": "Bb"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "lidí, že",
+                    "chord": "F"
                   }
                 ]
               },
@@ -435,7 +447,18 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Pohnout se mám potíže"
+                    "lyrics": "Pohnout se mám ",
+                    "chord": "Gm"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "potí",
+                    "chord": "C7"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": "že",
+                    "chord": "F"
                   }
                 ]
               }

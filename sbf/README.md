@@ -30,7 +30,7 @@ Needs `yangson` to run, install by `pip`.
 ### High
 - Webapp: read JSON directly
 - Webapp: chorus unfolding
-- Editor: split segment, delete segment
+- Editor: split block between lines, join blocks
 - TeX export
 
 ### Mid
@@ -39,6 +39,8 @@ Needs `yangson` to run, install by `pip`.
 - Webapp: run, autoscroll, show current segment
 - Tabulatures
 - Melodies
+- Editor: fix trailing focus by unselecting segment edit fields
+  by inheriting QTableView() and implementing focusOutEvent()
 
 ### Low
 - Webapp: favourites
