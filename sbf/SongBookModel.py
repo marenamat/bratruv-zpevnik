@@ -106,18 +106,34 @@ class SongBlockLineModel(QAbstractTableModel):
         assert(orientation == Qt.Vertical)
         return self.has_idx[section]
 
+    def dataDisplay(self, index):
+        try:
+            return getattr(self.line.segments[index.column()], self.has_idx[index.row()])
+        except Exception:
+            return QVariant()
+
     data_dispatcher = {
-            Qt.DisplayRole: lambda self, index: \
-                    getattr(self.line.segments[index.column()], self.has_idx[index.row()]) \
-                    if hasattr(self.line.segments[index.column()], self.has_idx[index.row()]) \
-                    else QVariant(),
-                    }
+            Qt.DisplayRole: lambda self, index: self.dataDisplay(index),
+            Qt.EditRole: lambda self, index: self.dataDisplay(index),
+            }
 
     def data(self, index, role):
-        if role in self.data_dispatcher:
+        try:
             return self.data_dispatcher[role](self, index)
-        else:
+        except Exception:
             return QVariant()
+
+    def flags(self, index):
+        return super().flags(index) | Qt.ItemIsEditable
+
+    def setData(self, index, value, role):
+        if role == Qt.EditRole:
+            setattr(self.line.segments[index.column()], self.has_idx[index.row()], value)
+            self.dataChanged.emit(index, index)
+            return True
+        else:
+            return False
+
 
 class SongBlockLine:
     def __init__(self, data):
