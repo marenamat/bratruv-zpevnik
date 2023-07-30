@@ -196,6 +196,9 @@ class SongBlockContents(SongBlock):
             keys[i.key] = True
             i.cleanup()
 
+    def deleteLine(self, line):
+        self.lines.remove(line)
+
     def mergeLinesAsChords(self, lyrics, chords):
         if len(chords.segments) == 1 and len(lyrics.segments) == 1:
             self.lines.remove(chords)
@@ -224,8 +227,7 @@ class SongBlockContents(SongBlock):
 
             self.lines[lindex] = SongBlockLine({ "segments": segments })
         else:
-            print(chords)
-            print(lyrics)
+            print("Unimplemented: Can't merge multi-segment lines as chords")
 
     def json(self):
         return {

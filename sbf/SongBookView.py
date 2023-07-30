@@ -174,6 +174,12 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
             self.linesLayout.addWidget(le)
             le.editor.setFixedWidth(self.lineMaxWidth)
 
+            deleteButton = QPushButton("Delete line")
+            deleteButton.setFixedWidth(int(deleteButton.sizeHint().height() * 4.5))
+            deleteButton.clicked.connect(self.deleteLine(le.line))
+
+            le.layout.addWidget(deleteButton)
+
             if ple is not None and ple.editor.model().isLyricsOnly() and le.editor.model().isLyricsOnly():
                 ple.layout.addWidget(mergeChordsButton := QPushButton("Is Chords ↓"))
                 mergeChordsButton.setFixedWidth(int(mergeChordsButton.sizeHint().height() * 4.5))
@@ -182,6 +188,12 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
             ple = le
 
         self.linesLayout.addStretch(1)
+
+    def deleteLine(self, line):
+        def inner():
+            self.block.deleteLine(line)
+            self.createEditor()
+        return inner
 
     def mergeLinesAsChords(self, lyrics, chords):
         def inner():
