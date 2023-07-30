@@ -13,6 +13,12 @@ import re
 class SongBlock:
     def __init__(self, data):
         self.name = str(data["name"])
+        self.oldname = None
+
+    def setName(self, val):
+        assert(self.oldname is None)
+        self.oldname = self.name
+        self.name = val
 
     def json(self):
         return {
@@ -270,9 +276,15 @@ class SongBlockIndex(QAbstractListModel):
         self.endInsertRows()
 
     def remove(self, what):
-        assert(what.name in self.blocks)
-        oi = self.ordered.index(what.name)
-        del self.blocks[what.name]
+        if what.oldname is not None:
+            n = what.oldname
+            what.oldname = None
+        else:
+            n = what.name
+
+        assert(n in self.blocks)
+        oi = self.ordered.index(n)
+        del self.blocks[n]
 
         self.beginRemoveRows(QModelIndex(), oi, oi)
         self.ordered = sorted(self.blocks)

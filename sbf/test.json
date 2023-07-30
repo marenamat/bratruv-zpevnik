@@ -29,14 +29,14 @@
         ],
         "blocks": [
           {
-            "name": "_ab_0",
+            "name": "1.",
             "lines": [
               {
                 "key": 0,
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "Strejček ",
+                    "lyrics": " Strejček ",
                     "chord": "C"
                   },
                   {
@@ -81,38 +81,38 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "jednu ",
-                    "chord": "C     "
+                    "lyrics": " jednu ",
+                    "chord": "C"
                   },
                   {
                     "key": 2,
                     "lyrics": "malou ",
-                    "chord": "Emi7/H "
+                    "chord": "Emi7/H"
                   },
                   {
                     "key": 3,
                     "lyrics": " kapku ",
-                    "chord": "Ami7 "
+                    "chord": "Ami7"
                   },
                   {
                     "key": 4,
                     "lyrics": "deště, ",
-                    "chord": "C/G    "
+                    "chord": "C/G"
                   },
                   {
                     "key": 5,
                     "lyrics": " ta mu ",
-                    "chord": "Fmaj7  "
+                    "chord": "Fmaj7"
                   },
                   {
                     "key": 6,
                     "lyrics": "spadla ",
-                    "chord": "C     "
+                    "chord": "C"
                   },
                   {
                     "key": 7,
                     "lyrics": "pod no",
-                    "chord": "Fmaj7 "
+                    "chord": "Fmaj7"
                   },
                   {
                     "key": 8,
@@ -122,124 +122,231 @@
                 ]
               },
               {
-                "key": 4,
+                "key": 2,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "    C      Emi7/H Ami7  C/G   Fmaj7    C      Fmaj7 G"
+                    "lyrics": " nejdřív",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "ale",
+                    "chord": "Emi7/H"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": " chytil ",
+                    "chord": "Ami7"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "slinu, ",
+                    "chord": "C/G"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": " tak šáh' ",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 5,
+                    "lyrics": "kamsi",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 6,
+                    "lyrics": " pro pi",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 7,
+                    "lyrics": "vo,",
+                    "chord": "G"
                   }
                 ]
               },
               {
-                "key": 5,
+                "key": 3,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   nejdřív ale chytil slinu, tak šáh' kamsi pro pivo,"
-                  }
-                ]
-              },
-              {
-                "key": 6,
-                "segments": [
+                    "lyrics": " pak při",
+                    "chord": "C"
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "    C      Emi7/H Ami7 C/G Fmaj7 C      Fmaj7 G"
-                  }
-                ]
-              },
-              {
-                "key": 7,
-                "segments": [
+                    "key": 1,
+                    "lyrics": "táhl",
+                    "chord": "Emi7/H"
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "   pak přitáhl kovadlinu a obrovský kladivo."
+                    "key": 2,
+                    "lyrics": " kova",
+                    "chord": "Ami7"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "dlinu",
+                    "chord": "C/G"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": " a o",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 5,
+                    "lyrics": "brovský ",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 6,
+                    "lyrics": "kladi",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 7,
+                    "lyrics": "vo.",
+                    "chord": "G"
                   }
                 ]
               }
             ]
           },
           {
-            "name": "_ab_1",
+            "name": "R",
             "lines": [
               {
-                "key": 9,
+                "key": 0,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "           C        Emi7/H Ami7     C/G"
+                    "lyrics": "Zatím ",
+                    "chord": ""
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "tři bílé ",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": "vrány ",
+                    "chord": "Emi7/H"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "pěkně za se",
+                    "chord": "Ami7"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": "bou",
+                    "chord": "C/G"
                   }
                 ]
               },
               {
-                "key": 10,
+                "key": 1,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "R: Zatím tři bílé vrány pěkně za sebou"
+                    "lyrics": "kolem ",
+                    "chord": ""
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "jdou, někam ",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": "jdou, do ry",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "tmu se kýva",
+                    "chord": "D7"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": "jí,",
+                    "chord": "G"
                   }
                 ]
               },
               {
-                "key": 11,
+                "key": 2,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "           Fmaj7       C          D7        G"
+                    "lyrics": "tyhle ",
+                    "chord": ""
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "tři bílé ",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": "vrány ",
+                    "chord": "Emi7/H"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "pěkně za se",
+                    "chord": "Ami7"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": "bou",
+                    "chord": "C/G"
                   }
                 ]
               },
               {
-                "key": 12,
+                "key": 3,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   kolem jdou, někam jdou, do rytmu se kývají,"
-                  }
-                ]
-              },
-              {
-                "key": 13,
-                "segments": [
+                    "lyrics": "kolem ",
+                    "chord": ""
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "           C        Emi7/H Ami7     C/G"
-                  }
-                ]
-              },
-              {
-                "key": 14,
-                "segments": [
+                    "key": 1,
+                    "lyrics": "jdou, někam ",
+                    "chord": "Fmaj7"
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "   tyhle tři bílé vrány pěkně za sebou"
-                  }
-                ]
-              },
-              {
-                "key": 15,
-                "segments": [
+                    "key": 2,
+                    "lyrics": "jdou, nedo",
+                    "chord": "C"
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "           Fmaj7       C         Fmaj7     C"
-                  }
-                ]
-              },
-              {
-                "key": 16,
-                "segments": [
+                    "key": 3,
+                    "lyrics": "jdou, nedo",
+                    "chord": "Fmaj7"
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "   kolem jdou, někam jdou, nedojdou, nedojdou."
+                    "key": 4,
+                    "lyrics": "jdou.",
+                    "chord": "G"
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "name": "2.",
+            "lines": [
               {
                 "key": 18,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "2. Vydal z hrdla mocný pokřik ztichlým letním večerem,"
+                    "lyrics": "Vydal z hrdla mocný pokřik ztichlým letním večerem,"
                   }
                 ]
               },
@@ -248,7 +355,7 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   pak tu kapku všude rozstřík' jedním mocným úderem,"
+                    "lyrics": "pak tu kapku všude rozstřík' jedním mocným úderem,"
                   }
                 ]
               },
@@ -257,7 +364,7 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   celej svět byl náhle v kapce a vysoko nad námi"
+                    "lyrics": "celej svět byl náhle v kapce a vysoko nad námi"
                   }
                 ]
               },
@@ -266,34 +373,25 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   na obrovské mucholapce visí nebe s hvězdami."
+                    "lyrics": "na obrovské mucholapce visí nebe s hvězdami."
                   }
                 ]
-              },
-              {
-                "key": 23,
-                "segments": [
-                  {
-                    "key": 0,
-                    "lyrics": "R:"
-                  }
-                ]
-              },
-              {
-                "key": 24,
-                "segments": [
-                  {
-                    "key": 0,
-                    "lyrics": ""
-                  }
-                ]
-              },
+              }
+            ]
+          },
+          {
+            "name": "_ab_0",
+            "ref": "R"
+          },
+          {
+            "name": "3.",
+            "lines": [
               {
                 "key": 25,
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "3. Zpod víček mi vytrysk' pramen na zmačkané polštáře,"
+                    "lyrics": "Zpod víček mi vytrysk' pramen na zmačkané polštáře,"
                   }
                 ]
               },
@@ -302,7 +400,7 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   kdosi mě vzal kolem ramen a políbil na tváře,"
+                    "lyrics": "kdosi mě vzal kolem ramen a políbil na tváře,"
                   }
                 ]
               },
@@ -311,7 +409,7 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   kdesi v dálce rozmazaně strejda kovář odchází,"
+                    "lyrics": "kdesi v dálce rozmazaně strejda kovář odchází,"
                   }
                 ]
               },
@@ -320,11 +418,15 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "   do kalhot si čistí ruce umazané od sazí."
+                    "lyrics": "do kalhot si čistí ruce umazané od sazí."
                   }
                 ]
               }
             ]
+          },
+          {
+            "name": "_ab_1",
+            "ref": "R"
           }
         ]
       },
@@ -477,7 +579,27 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "A za přepážkou paní v letech má razítko gumové"
+                    "lyrics": "A "
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "za přepážkou ",
+                    "chord": "Bb"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": "paní v letech ",
+                    "chord": "F"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "má razítko ",
+                    "chord": "Bb"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": "gumové",
+                    "chord": "F"
                   }
                 ]
               },
@@ -486,7 +608,12 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "A občas tiskne tiskárnou z dob první války světové"
+                    "lyrics": "A "
+                  },
+                  {
+                    "key": 1,
+                    "lyrics": "občas tiskne tiskárnou z dob první války světové",
+                    "chord": "Bb"
                   }
                 ]
               },
@@ -495,7 +622,8 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Každému kdo spílá jí že zas na poště pros*al den"
+                    "lyrics": "Každému kdo spílá jí že zas na poště pros*al den",
+                    "chord": ""
                   }
                 ]
               },
@@ -504,7 +632,8 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "Nabídne los stírací ať uklidní se hazardem … já"
+                    "lyrics": "Nabídne los stírací ať uklidní se hazardem … já",
+                    "chord": ""
                   }
                 ]
               }

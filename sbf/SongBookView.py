@@ -58,9 +58,46 @@ class SongBlockAbstractEditor(QWidget):
         self.layout = QHBoxLayout(self)
 
         self.blockName = SongBlockNameEditor(block.name)
+        self.blockName.editingFinished.connect(self.setBlockName)
         self.layout.addWidget(self.blockName)
 
+    def setBlockName(self):
+        self.block.setName(self.blockName.text())
+        self.blockUpdated.emit([self.block])
+
+    def contextMenu(self):
+        menu = QMenu(self)
+
+        addRefAbove = QAction("Add RefBlock above")
+        addRefAbove.triggered.connect(self.addRefAbove)
+        menu.addAction(addRefAbove)
+
+        addRefBelow = QAction("Add RefBlock below")
+        addRefBelow.triggered.connect(self.addRefBelow)
+        menu.addAction(addRefBelow)
+
+        self.contextMenuKept = [ addRefAbove, addRefBelow ]
+
+        return menu
+
+    def refToMyself(self):
+        return SongBlockRef({
+            "name": "",
+            "ref": self.block.name,
+            })
+
+    def addRefAbove(self):
+        self.blockUpdated.emit([
+            self.refToMyself(), self.block,
+            ])
+
+    def addRefBelow(self):
+        self.blockUpdated.emit([
+            self.block, self.refToMyself(),
+            ])
+
     blockUpdated = Signal(list)
+
 
 class SongBlockEmptyEditor(SongBlockAbstractEditor):
     def __init__(self, block):
@@ -201,9 +238,8 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
             h = le.size().height()
             if y + h / 3 >= pos.y() >= y - prevheight / 3:
                 print("before line ", le.line)
-                menu = QMenu()
+                menu = self.contextMenu()
 
-                # This action destroys this view
                 acSplit = QAction("Split block")
                 acSplit.triggered.connect(self.splitBlock(le.line))
                 menu.addAction(acSplit)
@@ -213,6 +249,10 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
 
             else:
                 prevheight = h
+
+        m = self.contextMenu()
+        print(m)
+        m.exec(self.lines.mapToGlobal(pos))
 
     def deleteLine(self, line):
         def inner():
@@ -245,8 +285,12 @@ class SongBlockRefEditor(SongBlockAbstractEditor):
         self.ref = SongBlockRefChooser()
         self.ref.setModel(song.blockRefModel)
         self.ref.setCurrentIndex(song.blockRefModel.ordered.index(block.ref))
+        self.ref.currentIndexChanged.connect(self.changed)
         self.layout.addWidget(self.ref)
         self.layout.addStretch(1)
+
+    def changed(self, _):
+        self.block.ref = self.ref.currentText()
 
 class SongEditor(QWidget):
     def __init__(self):
