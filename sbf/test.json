@@ -36,16 +36,48 @@
                 "segments": [
                   {
                     "key": 0,
-                    "lyrics": "      C      Emi7/H Ami7   C/G   Fmaj7     C    Fmaj7 G"
-                  }
-                ]
-              },
-              {
-                "key": 1,
-                "segments": [
+                    "lyrics": "",
+                    "chord": "    "
+                  },
                   {
-                    "key": 0,
-                    "lyrics": "1. Strejček kovář chytil kleště, uštíp' z noční oblohy"
+                    "key": 1,
+                    "lyrics": "Strejček ",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 2,
+                    "lyrics": "kovář ",
+                    "chord": "Emi7/H"
+                  },
+                  {
+                    "key": 3,
+                    "lyrics": "chytil ",
+                    "chord": "Ami7"
+                  },
+                  {
+                    "key": 4,
+                    "lyrics": "kleště,",
+                    "chord": "C/G"
+                  },
+                  {
+                    "key": 5,
+                    "lyrics": " uštíp'",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 6,
+                    "lyrics": "z noční",
+                    "chord": "C"
+                  },
+                  {
+                    "key": 7,
+                    "lyrics": "oblo",
+                    "chord": "Fmaj7"
+                  },
+                  {
+                    "key": 8,
+                    "lyrics": "hy",
+                    "chord": "G"
                   }
                 ]
               },

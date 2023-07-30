@@ -8,6 +8,7 @@ from qtpy.QtCore import (
 
 from yangson import DataModel
 import json
+import re
 
 class SongBlock:
     def __init__(self, data):
@@ -89,6 +90,9 @@ class SongBlockLineModel(QAbstractTableModel):
         super().__init__()
         self.line = line
         self.scanLine()
+
+    def isLyricsOnly(self):
+        return len(self.has) == 1 and "lyrics" in self.has
 
     def rowCount(self, _):
         return len(self.has)
@@ -172,6 +176,37 @@ class SongBlockContents(SongBlock):
                 i.key += 1
             keys[i.key] = True
             i.cleanup()
+
+    def mergeLinesAsChords(self, lyrics, chords):
+        if len(chords.segments) == 1 and len(lyrics.segments) == 1:
+            self.lines.remove(chords)
+            lindex = self.lines.index(lyrics)
+
+            c = chords.segments[0].lyrics
+            l = lyrics.segments[0].lyrics
+
+            findChord = re.compile(" [^ ]")
+
+            segments = []
+
+            while m := findChord.search(c):
+                segments.append({
+                    "lyrics": l[:m.start()+1],
+                    "chord": c[:m.start()+1],
+                    })
+                l = l[m.start()+1:]
+                c = c[m.start()+1:]
+
+            if len(c) > 0 or len(l) > 0:
+                segments.append({
+                    "lyrics": l,
+                    "chord": c,
+                    })
+
+            self.lines[lindex] = SongBlockLine({ "segments": segments })
+        else:
+            print(chords)
+            print(lyrics)
 
     def json(self):
         return {

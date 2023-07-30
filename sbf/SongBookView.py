@@ -83,6 +83,8 @@ class SongBlockLineEditor(QWidget):
     def __init__(self, line):
         super().__init__()
 
+        self.line = line
+
         self.layout = QHBoxLayout(self)
 #        self.layout.setContentsMargins(0,3,0,3)
 #        self.layout.setSizeConstraint(QLayout.SetNoConstraint)
@@ -108,6 +110,17 @@ class SongBlockLineEditor(QWidget):
 class SongBlockContentsEditor(SongBlockAbstractEditor):
     def __init__(self, block):
         super().__init__(block)
+        self.createEditor()
+
+    def createEditor(self):
+        if hasattr(self, "linesLayout"):
+            while self.linesLayout.count() > 0:
+                self.linesLayout.removeItem(item := self.linesLayout.itemAt(0))
+                if (widget := item.widget()) is not None:
+                    widget.deleteLater()
+
+            self.layout.removeWidget(self.lines)
+            self.lines.deleteLater()
 
         self.lines = QWidget()
         self.layout.addWidget(self.lines)
@@ -117,14 +130,28 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
         self.linesLayout.setSpacing(0)
         self.linesLayout.setSizeConstraint(QLayout.SetNoConstraint)
 
-        self.lineEditors = [ SongBlockLineEditor(i) for i in block.lines ]
+        self.lineEditors = [ SongBlockLineEditor(i) for i in self.block.lines ]
         self.lineMaxWidth = max([ le.sizeHint().width() for le in self.lineEditors ])
 
+        ple = None
         for le in self.lineEditors:
             self.linesLayout.addWidget(le)
             le.editor.setFixedWidth(self.lineMaxWidth)
 
+            if ple is not None and ple.editor.model().isLyricsOnly() and le.editor.model().isLyricsOnly():
+                ple.layout.addWidget(mergeChordsButton := QPushButton("Is Chords ↓"))
+                mergeChordsButton.setFixedWidth(int(mergeChordsButton.sizeHint().height() * 4.5))
+                mergeChordsButton.clicked.connect(self.mergeLinesAsChords(lyrics=le.line, chords=ple.line))
+
+            ple = le
+
         self.linesLayout.addStretch(1)
+
+    def mergeLinesAsChords(self, lyrics, chords):
+        def inner():
+            self.block.mergeLinesAsChords(lyrics, chords)
+            self.createEditor()
+        return inner
 
 class SongBlockRefChooser(QComboBox):
     def sizeHint(self):
