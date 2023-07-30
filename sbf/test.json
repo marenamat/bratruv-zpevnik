@@ -27,7 +27,274 @@
         "authors": [
           "Karel Plíhal"
         ],
-        "blocks": []
+        "blocks": [
+          {
+            "name": "_ab_0",
+            "lines": [
+              {
+                "key": 0,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "      C      Emi7/H Ami7   C/G   Fmaj7     C    Fmaj7 G"
+                  }
+                ]
+              },
+              {
+                "key": 1,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "1. Strejček kovář chytil kleště, uštíp' z noční oblohy"
+                  }
+                ]
+              },
+              {
+                "key": 2,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "    C     Emi7/H Ami7 C/G    Fmaj7  C     Fmaj7 G"
+                  }
+                ]
+              },
+              {
+                "key": 3,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   jednu malou kapku deště, ta mu spadla pod nohy,"
+                  }
+                ]
+              },
+              {
+                "key": 4,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "    C      Emi7/H Ami7  C/G   Fmaj7    C      Fmaj7 G"
+                  }
+                ]
+              },
+              {
+                "key": 5,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   nejdřív ale chytil slinu, tak šáh' kamsi pro pivo,"
+                  }
+                ]
+              },
+              {
+                "key": 6,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "    C      Emi7/H Ami7 C/G Fmaj7 C      Fmaj7 G"
+                  }
+                ]
+              },
+              {
+                "key": 7,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   pak přitáhl kovadlinu a obrovský kladivo."
+                  }
+                ]
+              },
+              {
+                "key": 8,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": ""
+                  }
+                ]
+              },
+              {
+                "key": 9,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "           C        Emi7/H Ami7     C/G"
+                  }
+                ]
+              },
+              {
+                "key": 10,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "R: Zatím tři bílé vrány pěkně za sebou"
+                  }
+                ]
+              },
+              {
+                "key": 11,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "           Fmaj7       C          D7        G"
+                  }
+                ]
+              },
+              {
+                "key": 12,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   kolem jdou, někam jdou, do rytmu se kývají,"
+                  }
+                ]
+              },
+              {
+                "key": 13,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "           C        Emi7/H Ami7     C/G"
+                  }
+                ]
+              },
+              {
+                "key": 14,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   tyhle tři bílé vrány pěkně za sebou"
+                  }
+                ]
+              },
+              {
+                "key": 15,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "           Fmaj7       C         Fmaj7     C"
+                  }
+                ]
+              },
+              {
+                "key": 16,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   kolem jdou, někam jdou, nedojdou, nedojdou."
+                  }
+                ]
+              },
+              {
+                "key": 17,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": ""
+                  }
+                ]
+              },
+              {
+                "key": 18,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "2. Vydal z hrdla mocný pokřik ztichlým letním večerem,"
+                  }
+                ]
+              },
+              {
+                "key": 19,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   pak tu kapku všude rozstřík' jedním mocným úderem,"
+                  }
+                ]
+              },
+              {
+                "key": 20,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   celej svět byl náhle v kapce a vysoko nad námi"
+                  }
+                ]
+              },
+              {
+                "key": 21,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   na obrovské mucholapce visí nebe s hvězdami."
+                  }
+                ]
+              },
+              {
+                "key": 22,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": ""
+                  }
+                ]
+              },
+              {
+                "key": 23,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "R:"
+                  }
+                ]
+              },
+              {
+                "key": 24,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": ""
+                  }
+                ]
+              },
+              {
+                "key": 25,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "3. Zpod víček mi vytrysk' pramen na zmačkané polštáře,"
+                  }
+                ]
+              },
+              {
+                "key": 26,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   kdosi mě vzal kolem ramen a políbil na tváře,"
+                  }
+                ]
+              },
+              {
+                "key": 27,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   kdesi v dálce rozmazaně strejda kovář odchází,"
+                  }
+                ]
+              },
+              {
+                "key": 28,
+                "segments": [
+                  {
+                    "key": 0,
+                    "lyrics": "   do kalhot si čistí ruce umazané od sazí."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "name": "Rád chodím na poštu",

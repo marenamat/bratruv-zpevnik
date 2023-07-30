@@ -67,6 +67,8 @@ class SongBlockLine:
     def cleanup(self):
         keys = {}
         for s in self.segments:
+            if s.key is None:
+                s.key = 0
             while s.key in keys:
                 s.key += 1
             keys[s.key] = True
@@ -85,6 +87,8 @@ class SongBlockContents(SongBlock):
     def cleanup(self, _):
         keys = {}
         for i in self.lines:
+            if i.key is None:
+                i.key = 0
             while i.key in keys:
                 i.key += 1
             keys[i.key] = True
