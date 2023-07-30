@@ -113,13 +113,20 @@ class SongBlockLineEditor(QWidget):
         self.layout.setVerticalSpacing(1)
         self.layout.setHorizontalSpacing(1)
 
-        self.children = []
+        for o in self.ordering:
+            if o in has:
+                self.layout.addWidget(la := QLabel(o[:2]), has[o], 0)
 
         for idx, s in enumerate(line.segments):
             for o in self.ordering:
-                if o in has and hasattr(s, o):
-                    self.layout.addWidget(le := QLineEdit(getattr(s, o)), has[o], idx)
-                    self.children.append(le)
+                if o in has:
+                    val = getattr(s, o) if hasattr(s, o) else ""
+                    self.layout.addWidget(le := QLineEdit(val), has[o], idx+1)
+
+        if "chord" not in has:
+            self.layout.addWidget(
+                    addChordsButton := QPushButton("Add Chords"),
+                    has["lyrics"], len(line.segments)+1)
 
 class SongBlockContentsEditor(SongBlockAbstractEditor):
     def __init__(self, block):
