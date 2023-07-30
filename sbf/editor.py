@@ -1,13 +1,14 @@
 from qtpy.QtCore import (
         Qt, QEvent, QObject, Signal, Slot,
         QAbstractTableModel, QSize, QVariant,
-        QItemSelectionModel,
+        QItemSelectionModel, QAbstractListModel,
+        QModelIndex,
         )
 from qtpy.QtWidgets import (
         QApplication, QFrame, QLabel, QMainWindow,
         QPushButton, QHBoxLayout, QVBoxLayout, QWidget,
         QTableView, QSplitter, QTextEdit, QLineEdit,
-        QGridLayout, QLayout, QScrollArea,
+        QGridLayout, QLayout, QScrollArea, QComboBox,
         )
 #from qtpy.QtGui import (
 #        )
@@ -109,6 +110,49 @@ class SongBlockContents(SongBlock):
                 "lines": [ i.json() for i in self.lines ],
                 }
 
+class SongBlockIndex(QAbstractListModel):
+    def __init__(self, song):
+        super().__init__()
+
+        self.blocks = { d.name: d for d in song.blocks }
+        self.ordered = sorted(self.blocks)
+
+    def __contains__(self, what):
+        return what in self.blocks
+
+    def add(self, what):
+        assert(what.name not in self.blocks)
+        self.blocks[what.name] = what
+
+        nord = sorted(self.blocks)
+        ni = nord.index(what.name)
+
+        self.beginInsertRows(QModelIndex(), ni, ni)
+        self.ordered = nord
+        self.endInsertRows()
+
+    def remove(self, what):
+        assert(what.name in self.blocks)
+        oi = self.ordered.index(what.name)
+        del self.blocks[what.name]
+
+        self.beginRemoveRows(QModelIndex(), oi, oi)
+        self.ordered = sorted(self.blocks)
+        self.endRemoveRows()
+
+    def rowCount(self, index):
+        return len(self.ordered)
+
+    data_dispatcher = {
+            Qt.DisplayRole: lambda self, index: self.ordered[index.row()],
+            }
+
+    def data(self, index, role):
+        if role in self.data_dispatcher:
+            return self.data_dispatcher[role](self, index)
+        else:
+            return QVariant()
+
 class Song:
     def __init__(self, songbook, data):
         self.data = data
@@ -119,19 +163,45 @@ class Song:
                 for d in data["blocks"]
                 ] if "blocks" in data else []
 
-        self.blockindex = { d.name: d for d in self.blocks }
-
+        self.blockRefModel = SongBlockIndex(self)
 
     def displayAuthorList(self):
         return ", ".join([ a.name for a in self.authors ])
 
+    def blockAutoName(self):
+        cnt = 0
+        while (bn := f"_ab_{cnt}") in self.blockRefModel:
+            cnt += 1
+
+        return bn
+
+    def refBlocks(self, blocks):
+        for b in blocks:
+            if b.name == "":
+                b.name = self.blockAutoName()
+            elif b.name in self.blockRefModel:
+                raise Exception("Multiple blocks with the same index")
+
+            self.blockRefModel.add(b)
+
+    def unrefBlocks(self, blocks):
+        for b in blocks:
+            self.blockRefModel.remove(b)
+
     def insert(self, after, block):
+        self.refBlocks([block])
+
         index = self.blocks.index(after) if after is not None else 0
         self.blocks = self.blocks[:index] + [block] + self.blocks[index:]
 
     def replace(self, old, new):
+        self.unrefBlocks([old])
+        self.refBlocks(new)
+
         index = self.blocks.index(old)
         self.blocks = self.blocks[:index] + new + self.blocks[index+1:]
+
+        self.cleanup()
 
     def cleanup(self):
         self.blocks = [ b for b in self.blocks if type(b) is not SongBlockEmpty ]
@@ -251,9 +321,6 @@ class SongListView(QTableView):
         self.resizeColumnsToContents()
 
 class SongBlockNameEditor(QLineEdit):
-    def __init__(self, *args):
-        super().__init__(*args)
-
     def sizeHint(self):
         h = super().sizeHint()
         self.setFixedWidth(h.height() * 2)
@@ -353,9 +420,22 @@ class SongBlockContentsEditor(SongBlockAbstractEditor):
 
         self.linesLayout.addStretch(1)
 
+class SongBlockRefChooser(QComboBox):
+    def sizeHint(self):
+        h = super().sizeHint()
+        self.setFixedWidth(h.height() * 2)
+        return QSize(h.height() * 2, h.height())
+
+
 class SongBlockRefEditor(SongBlockAbstractEditor):
-    def __init__(self, block):
+    def __init__(self, block, song):
         super().__init__(block)
+
+        self.ref = SongBlockRefChooser()
+        self.ref.setModel(song.blockRefModel)
+        self.ref.setCurrentIndex(song.blockRefModel.ordered.index(block.ref))
+        self.layout.addWidget(self.ref)
+        self.layout.addStretch(1)
 
 class SongEditor(QWidget):
     def __init__(self):
@@ -386,7 +466,7 @@ class SongEditor(QWidget):
 
         for b in self.song.blocks:
             self.layout.addWidget(be := {
-                SongBlockRef: lambda b: SongBlockRefEditor(b),
+                SongBlockRef: lambda b: SongBlockRefEditor(b, self.song),
                 SongBlockContents: lambda b: SongBlockContentsEditor(b),
                 SongBlockEmpty: lambda b: SongBlockEmptyEditor(b),
                 }[type(b)](b))
@@ -400,7 +480,6 @@ class SongEditor(QWidget):
 
         # Clean up old song
         if self.song is not None:
-            TODO("Song saving!")
             self.song.cleanup()
 
         self.song = song
