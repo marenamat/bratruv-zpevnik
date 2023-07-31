@@ -25,12 +25,11 @@
       </div>
 
       <div class="song-text">
-        <div v-for="block in songData.blocks" :key="block.name">
-          <span class="verse" :verse="block.name"></span>
-          <span v-if="'lines' in block" v-for="line in block.lines" class="line">
+        <div v-for="block in songData.blocks" :verse="block.name" :key="block.key" class="block">
+          <span v-for="line in block.lines" :verse="block.name" class="line">
             <span v-for="segment in line.segments" class="segment">
               <span v-if="'chord' in segment" class="chord">
-                {{ segment.chord }}
+                {{ segment.chord }}&nbsp;
               </span>
               <span class="lyrics">
                 {{ segment.lyrics.replace(/ /g, '&nbsp;') }}
@@ -184,6 +183,11 @@ h2 {
   display: block;
 }
 
+.song >>> .block {
+  margin-top: 2ex;
+  margin-bottom: 2ex;
+}
+
 .song >>> .fermata {
   font-size: x-large;
   transform: translateY(50%);
@@ -193,29 +197,19 @@ h2 {
   position: relative;
 }
 
-.song >>> .verse::after {
+.song >>> .line:first-child {
+}
+
+.song >>> .line:first-child::before {
+  width: 0px;
+  max-width: 0px;
   content: attr(verse);
+  font-size: 100%;
   font-weight: bold;
-  transform: translateX(-100%);
-  position: absolute;
-  bottom: 0;
-}
-
-.song >>> .chorus {
   position: relative;
-}
-
-.song >>> .chorus::after {
-  content: "R:\00a0";
-  font-weight: bold;
-  transform: translateX(-100%);
-  position: absolute;
-  bottom: 0;
-  /* display: inline-block; */
-}
-
-.song >>> .chorus.alt::after {
-  content: attr(label)"\00a0";
+  overflow: visible;
+  display: inline-block;
+  left: -1.5em;
 }
 
 .song >>> .recitativ-head {

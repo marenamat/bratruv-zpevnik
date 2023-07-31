@@ -45,7 +45,22 @@ export default {
       for (let s = 0; s < state.songs.length; s++) {
         state.songs[s].index = s
         state.songs[s].author = state.songs[s].authors.join(', ')
+
+        const blockIndex = {}
+        for (let b = 0; b < state.songs[s].blocks.length; b++) {
+          blockIndex[state.songs[s].blocks[b].name] = b
+          if ('ref' in state.songs[s].blocks[b]) {
+            state.songs[s].blocks[b].key = state.songs[s].blocks[b].name
+            state.songs[s].blocks[b].lines = state.songs[s].blocks[blockIndex[state.songs[s].blocks[b].ref]].lines
+            state.songs[s].blocks[b].name = state.songs[s].blocks[b].ref
+          }
+          if (state.songs[s].blocks[b].name.charAt(0) == '_') {
+            state.songs[s].blocks[b].name = ""
+          }
+        }
       }
+
+      console.log('updated  songs', state.songs)
 
       state.authors = songbook['authors']
       state.isLoaded = true
