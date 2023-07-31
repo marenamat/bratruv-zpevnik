@@ -71,7 +71,7 @@ export default {
   },
   actions: {
     async loadSongs ({ commit }) {
-      axios.get('/test.json')
+      axios.get('/songbook.json')
         .then(response => {
           commit('setSongs', response.data['universal-songbook-format:songbook'])
         })
