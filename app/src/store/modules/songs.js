@@ -54,8 +54,8 @@ export default {
             state.songs[s].blocks[b].lines = state.songs[s].blocks[blockIndex[state.songs[s].blocks[b].ref]].lines
             state.songs[s].blocks[b].name = state.songs[s].blocks[b].ref
           }
-          if (state.songs[s].blocks[b].name.charAt(0) == '_') {
-            state.songs[s].blocks[b].name = ""
+          if (state.songs[s].blocks[b].name.charAt(0) === '_') {
+            state.songs[s].blocks[b].name = ''
           }
         }
       }
@@ -71,7 +71,7 @@ export default {
   },
   actions: {
     async loadSongs ({ commit }) {
-      axios.get('https://raw.githubusercontent.com/marenamat/bratruv-zpevnik/uniformat/sbf/test.json')
+      axios.get('/test.json')
         .then(response => {
           commit('setSongs', response.data['universal-songbook-format:songbook'])
         })

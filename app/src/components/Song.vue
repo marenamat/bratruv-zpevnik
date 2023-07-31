@@ -26,8 +26,8 @@
 
       <div class="song-text">
         <div v-for="block in songData.blocks" :verse="block.name" :key="block.key" class="block">
-          <span v-for="line in block.lines" :verse="block.name" class="line">
-            <span v-for="segment in line.segments" class="segment">
+          <span v-for="line in block.lines" :verse="block.name" :key="line.key" class="line">
+            <span v-for="segment in line.segments" :key="segment.key" class="segment">
               <span v-if="'chord' in segment" class="chord">
                 {{ segment.chord }}&nbsp;
               </span>
