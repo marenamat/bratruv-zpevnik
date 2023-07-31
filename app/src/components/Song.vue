@@ -24,7 +24,21 @@
         </button>
       </div>
 
-      <div class="song-text" v-html="songText" />
+      <div class="song-text">
+        <div v-for="block in songData.blocks" :key="block.name">
+          <span class="verse" :verse="block.name"></span>
+          <span v-if="'lines' in block" v-for="line in block.lines" class="line">
+            <span v-for="segment in line.segments" class="segment">
+              <span v-if="'chord' in segment" class="chord">
+                {{ segment.chord }}
+              </span>
+              <span class="lyrics">
+                {{ segment.lyrics }}
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
     </div>
   </v-container>
 </template>
@@ -61,9 +75,11 @@ export default {
     songData () {
       return this.hasVersions ? this.song.versions[this.currentVersionIndex].song : this.song
     },
-    songText () {
-      return this.songData.text && this.songData.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
-    },
+//    songText () {
+//
+// TODO: update the auto-transpose feature
+//      return this.songData.text && this.songData.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
+//    },
     currentLanguage () {
       return this.hasVersions ? this.song.versions[(this.currentVersionIndex + 1) % 2].language : ''
     },
@@ -154,6 +170,14 @@ h2 {
   /* left: 0; */
   bottom: 1.6ex;
   /* display: inline-block; */
+}
+
+.song >>> .segment {
+  display: inline-block;
+}
+
+.song >>> .line {
+  display: block;
 }
 
 .song >>> .fermata {
