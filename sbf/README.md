@@ -37,6 +37,7 @@ Needs `yangson` to run, install by `pip`.
 - More automatics in TeX
 - Time signature, tempo, segment timing
 - Webapp: run, autoscroll, show current segment
+- Webapp: auto key transpose
 - Tabulatures
 - Melodies
 - Editor: fix trailing focus by unselecting segment edit fields

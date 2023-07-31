@@ -57,11 +57,11 @@ module universal-songbook-format {
     list songs {
       description "Top-level song structure";
 
-      key "name";
+      key "title";
 
-      leaf name {
+      leaf title {
 	type string;
-	description "Name of the song";
+	description "Song title";
       }
 
       leaf-list authors {

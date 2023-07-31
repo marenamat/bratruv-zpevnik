@@ -306,7 +306,7 @@ class SongBlockIndex(QAbstractListModel):
 class Song:
     def __init__(self, songbook, data):
         self.data = data
-        self.title = str(data["name"])
+        self.title = str(data["title"])
         self.authors = [ songbook.author_index[str(a)] for a in data["authors"] ]
         self.blocks = [
                 SongBlockRef(d) if "ref" in d else SongBlockContents(d)
@@ -373,7 +373,7 @@ class Song:
 
     def json(self):
         return {
-                "name": self.title,
+                "title": self.title,
                 "authors": [ a.name for a in self.authors ],
                 "blocks": [ b.json() for b in self.blocks ],
                 }

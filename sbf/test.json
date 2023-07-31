@@ -16,14 +16,7 @@
     ],
     "songs": [
       {
-        "name": "Ještě jedno kafe",
-        "authors": [
-          "Robert Křesťan"
-        ],
-        "blocks": []
-      },
-      {
-        "name": "Kluziště",
+        "title": "Kluziště",
         "authors": [
           "Karel Plíhal"
         ],
@@ -431,7 +424,7 @@
         ]
       },
       {
-        "name": "Rád chodím na poštu",
+        "title": "Rád chodím na poštu",
         "authors": [
           "Pokáč"
         ],

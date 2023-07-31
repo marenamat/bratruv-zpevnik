@@ -33,9 +33,9 @@ sub segmentLine {
 }
 
 sub lineBlock {
-    dd [ $_[0] ];
+  #    dd [ $_[0] ];
   my $name = ($_[0] =~ s#^\{([^{}]+)\}##s) ? $1 : "_pab_" . (int 1000 * rand);
-    dd [ $name, $_[0] ];
+  #    dd [ $name, $_[0] ];
   my $o = { "name" => "$name" // ("_pab_" . (int 1000 * rand)), "lines" => [ grep { scalar @{$_->{segments}} } map +( { "segments" => segmentLine($_) } ), split /\\\\/, $_[0] ], };
 
   return unless @{$o->{lines}};
@@ -50,8 +50,7 @@ sub lineBlock {
 my @songs;
 my %authors;
 
-while ($data =~ m#\\song\{(?<name>[^{}]+)\}\{(?<author>[^{}]+)\}\{(?:[^{}]+)\}\{(?:[^{}]+)\}\{(?<contents>(?:[^{}]|\{(?&contents)\})*)\}#gs)
-#while ($data =~ m#\\song\{(?<name>[^{}]+)\}\{(?<author>[^{}]+)\}\{(?:[^{}]+)\}\{(?:[^{}]+)\}#gs)
+while ($data =~ m#\\song\{(?<title>[^{}]+)\}\{(?<author>[^{}]+)\}\{(?:[^{}]+)\}\{(?:[^{}]+)\}\{(?<contents>(?:[^{}]|\{(?&contents)\})*)\}#gs)
 {
   my %song = %+;
 
@@ -88,11 +87,17 @@ while ($data =~ m#\\song\{(?<name>[^{}]+)\}\{(?<author>[^{}]+)\}\{(?:[^{}]+)\}\{
   #  say $song{contents};
 }
 
+my $J = JSON->new;
+$J->pretty();
+$J->space_before(0);
+
 open F, ">", "imported.json" or die $!;
-print F encode_json {
+my $edata = $J->encode ({
   "universal-songbook-format:songbook" => {
     "authors" => [ map +( { "name" => $_ } ), keys %authors ],
     "songs" => \@songs,
   },
-};
+});
+$edata =~ s/   /  /g;
+print F $edata;
 close F;
