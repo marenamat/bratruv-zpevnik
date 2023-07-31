@@ -33,7 +33,7 @@
                 {{ segment.chord }}
               </span>
               <span class="lyrics">
-                {{ segment.lyrics }}
+                {{ segment.lyrics.replace(/ /g, '&nbsp;') }}
               </span>
             </span>
           </span>
@@ -166,10 +166,14 @@ h2 {
   /* content: attr(chord); */
   font-weight: bold;
   font-style: normal;
-  position: absolute;
+  /* position: absolute; */
   /* left: 0; */
   bottom: 1.6ex;
-  /* display: inline-block; */
+  display: block;
+}
+
+.song >>> .lyrics {
+  display: block;
 }
 
 .song >>> .segment {
