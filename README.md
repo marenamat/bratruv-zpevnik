@@ -23,6 +23,9 @@ Every segment has its lyrics part and chorus part. In future, these segments
 will have assigned time duration to enable for autoscroll and current segment
 highlighting.
 
+Blocks with names beginning with an underscore `_` are considered *technical*
+and are shown without these names.
+
 The description of this format is in `sbf/universal-songbook-format.yang`.
 
 I dropped the LaTeX parser from the web app and it's now using the JSON
@@ -32,6 +35,26 @@ directly. However, I broke some features on my way so fixes are needed.
 
 Needs `yangson` to run, install by `pip`. Use on your risks, pull requests for
 verbesserungen deeply appreciated.
+
+## Text-Friendly SongBook Format
+
+To allow editing songs in plain text editors, there is also a special `tfsbf` format
+intended to be easily converted from/to the JSON format by a script. Now only
+the `tfsbf` generator exists; the back-convertor is to be done soon.
+
+This format begins each line with a 4-letter signature and a space (which may be omitted
+if the whole line is just the signature).
+
+- `SONG`: begin of song
+- `TITL (text)`: name of song
+- `AUTH (text)`: author of song (may be repeated)
+- `BLCK (id)`: block begin with a given ID
+- `REFR (id)`: a reference to another block
+- `LYRI (text)`: lyrics; fill with `~` to match the chord line in length
+- `CHRD (chords)`: chords matched with the lyrics *under* them
+- `ENDS`: end of song
+
+*(list to be updated as new features come by)*
 
 ## TODO
 
