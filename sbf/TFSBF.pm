@@ -1,6 +1,7 @@
 package TFSBF;
 
 use utf8;
+use locale;
 use common::sense;
 use Data::Dump;
 use List::Util qw/max min/;
@@ -48,19 +49,19 @@ sub flushline($) {
     }
 
     push @segments, {
-      key => "".scalar @segments,
-      map +( $mapping_by_tfsbf{$_->{name}}->{json} => $_->{data} ), @L,
+      key => 1 + scalar @segments,
+      map +( length $_->{data} ? ($mapping_by_tfsbf{$_->{name}}->{json} => $_->{data}) : ()), @L,
     };
   }
 
-  push @{$ctx->{curblock}->{lines}}, { key => "".scalar @{$ctx->{curblock}->{lines}}, segments => [ @segments ] };
+  push @{$ctx->{curblock}->{lines}}, { key => 1 + scalar @{$ctx->{curblock}->{lines}}, segments => [ @segments ] };
 }
 
 sub linegen($$) {
   my ($ctx, %arg) = @_;
   exists $ctx->{curblock} or die "Open block by BLCK first: $arg{name} $arg{args}";
   my $map = $mapping_by_tfsbf{$arg{name}};
-  flushline $ctx if defined $ctx->{lastorder} and $ctx->{lastorder} > $map->{order};
+  flushline $ctx if defined $ctx->{lastorder} and $ctx->{lastorder} >= $map->{order};
 
   push @{$ctx->{curline}}, { %arg };
   $ctx->{lastorder} = $map->{order};
@@ -206,7 +207,7 @@ sub to_obj($) {
       songs => $ctx->{songs},
       authors => [ map +( {
 	    name => $_,
-	  } ), sort { $::a cmp $::b } keys %{$ctx->{authors}} ],
+	  } ), sort { $a cmp $b } keys %{$ctx->{authors}} ],
     }};
 }
 
