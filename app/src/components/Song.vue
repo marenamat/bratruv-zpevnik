@@ -32,7 +32,7 @@
                 {{ segment.chord }}&nbsp;
               </span>
               <span class="lyrics">
-                {{ segment.lyrics.replace(/ /g, '&nbsp;') }}
+                {{ 'lyrics' in segment ? segment.lyrics.replace(/ /g, '&nbsp;') : "" }}
               </span>
             </span>
           </span>
