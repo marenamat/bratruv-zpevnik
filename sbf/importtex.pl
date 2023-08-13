@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 use utf8;
+use locale;
 use common::sense;
 use Data::Dump;
 use JSON;
@@ -42,7 +43,7 @@ sub lineBlock {
 
   for (my $i=0; $i<@{$o->{lines}}; $i++)
   {
-    $o->{lines}->[$i]->{key} = $i;
+    $o->{lines}->[$i]->{key} = $i + 1;
   }
   return $o;
 }
@@ -90,11 +91,12 @@ while ($data =~ m#\\song\{(?<title>[^{}]+)\}\{(?<author>[^{}]+)\}\{(?:[^{}]+)\}\
 my $J = JSON->new;
 $J->pretty();
 $J->space_before(0);
+$J->canonical(1);
 
 open F, ">", "imported.json" or die $!;
 my $edata = $J->encode ({
   "universal-songbook-format:songbook" => {
-    "authors" => [ map +( { "name" => $_ } ), keys %authors ],
+    "authors" => [ map +( { "name" => $_ } ), sort { $::a cmp $::b } keys %authors ],
     "songs" => \@songs,
   },
 });
