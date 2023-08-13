@@ -40,15 +40,12 @@ sub flushline($) {
 
     my $len = min map +($_->{len}), @L;
 
-    dd [ @L, $len ];
     last if $len == 0;
 
     foreach (@L) {
       $_->{data} = substr $_->{data}, 0, $len;
       substr $_->{args}, 0, $len, "";
     }
-
-    dd [ @L ];
 
     push @segments, {
       key => "".scalar @segments,
@@ -61,7 +58,6 @@ sub flushline($) {
 
 sub linegen($$) {
   my ($ctx, %arg) = @_;
-  dd { %arg };
   exists $ctx->{curblock} or die "Open block by BLCK first: $arg{name} $arg{args}";
   my $map = $mapping_by_tfsbf{$arg{name}};
   flushline $ctx if defined $ctx->{lastorder} and $ctx->{lastorder} > $map->{order};
@@ -156,7 +152,7 @@ mapping (
     exists $ctx->{cursong} or die "Open song by SONG first";
     close_block $ctx;
     push @{$ctx->{songs}}, $ctx->{cursong};
-    map { delete $ctx->{$_} } grep { $_ ne "songs" } keys %$ctx;
+    map { delete $ctx->{$_} } grep { $_ !~ m/^songs|authors$/ } keys %$ctx;
   },
 );
 
@@ -198,19 +194,20 @@ sub from_obj($) {
 sub to_obj($) {
   my $ctx = { songs => [] };
 
-  dd \%mapping_by_tfsbf;
-
   foreach (split /\n/, $_[0])
   {
     /^\s*$/ and next; # ignore empty lines
     /^(?<name>[A-Za-z0-9]{4})(?: (?<args>.*))?$/p or die "Malformed line: $_";
-    dd { %+ };
     exists $mapping_by_tfsbf{$+{name}} or die "Unknown line tag $+{name}";
     $mapping_by_tfsbf{$+{name}}->{generate}->($ctx, %+);
   }
 
-  return { "universal-songbook-format:songbook" => { songs => $ctx->{songs} }};
+  return { "universal-songbook-format:songbook" => {
+      songs => $ctx->{songs},
+      authors => [ map +( {
+	    name => $_,
+	  } ), sort { $::a cmp $::b } keys %{$ctx->{authors}} ],
+    }};
 }
 
-say "a";
 42;

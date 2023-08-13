@@ -9,7 +9,6 @@ use FindBin;
 use lib "$FindBin::Bin";
 use TFSBF;
 
-say "n";
 open F, "<:utf8", "songbook.tfsbf" or die $!;
 open G, ">", "songbook.json" or die $!;
 undef local $/;
