@@ -1,11 +1,23 @@
 import axios from 'axios'
-import { parseAllSongs } from '../../helpers/parseTex'
 
 const normalizeString = (str) => str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
+const matchStringToKeyword = (s, keyword) => {
+  return s && normalizeString(s).indexOf(keyword) >= 0
+}
+
 const matchSongVersionToKeyword = (song, keyword) => {
-  return (song.title && normalizeString(song.title).indexOf(keyword) >= 0) ||
-  (song.author && normalizeString(song.author).indexOf(keyword) >= 0)
+  if (matchStringToKeyword(song.title, keyword)) {
+    return true
+  }
+
+  for (const a in song.authors) {
+    if (matchStringToKeyword(a.name, keyword)) {
+      return true
+    }
+  }
+
+  return false
 }
 
 const matchSongToKeyword = (song, keyword) => {
@@ -27,8 +39,30 @@ export default {
     isLoaded: false,
   },
   mutations: {
-    setSongs (state, payload) {
-      state.songs = payload
+    setSongs (state, songbook) {
+      console.log('saving', songbook)
+      state.songs = songbook['songs']
+      for (let s = 0; s < state.songs.length; s++) {
+        state.songs[s].index = s
+        state.songs[s].author = state.songs[s].authors.join(', ')
+
+        const blockIndex = {}
+        for (let b = 0; b < state.songs[s].blocks.length; b++) {
+          blockIndex[state.songs[s].blocks[b].name] = b
+          if ('ref' in state.songs[s].blocks[b]) {
+            state.songs[s].blocks[b].key = state.songs[s].blocks[b].name
+            state.songs[s].blocks[b].lines = state.songs[s].blocks[blockIndex[state.songs[s].blocks[b].ref]].lines
+            state.songs[s].blocks[b].name = state.songs[s].blocks[b].ref
+          }
+          if (state.songs[s].blocks[b].name.charAt(0) === '_') {
+            state.songs[s].blocks[b].name = ''
+          }
+        }
+      }
+
+      console.log('updated  songs', state.songs)
+
+      state.authors = songbook['authors']
       state.isLoaded = true
     },
     setSearchKeyword (state, payload) {
@@ -37,10 +71,9 @@ export default {
   },
   actions: {
     async loadSongs ({ commit }) {
-      axios.get('https://raw.githubusercontent.com/martisekpetr/bratruv-zpevnik/master/zpevnik.tex')
+      axios.get('/songbook.json')
         .then(response => {
-          const songs = parseAllSongs(response)
-          commit('setSongs', songs)
+          commit('setSongs', response.data['universal-songbook-format:songbook'])
         })
         .catch(error => {
           console.log(error)

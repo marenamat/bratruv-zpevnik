@@ -24,7 +24,20 @@
         </button>
       </div>
 
-      <div class="song-text" v-html="songText" />
+      <div class="song-text">
+        <div v-for="block in songData.blocks" :verse="block.name" :key="block.key" class="block">
+          <span v-for="line in block.lines" :verse="block.name" :key="line.key" class="line">
+            <span v-for="segment in line.segments" :key="segment.key" class="segment">
+              <span v-if="'chord' in segment" class="chord">
+                {{ segment.chord }}&nbsp;
+              </span>
+              <span class="lyrics">
+                {{ segment.lyrics.replace(/ /g, '&nbsp;') }}
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
     </div>
   </v-container>
 </template>
@@ -61,9 +74,11 @@ export default {
     songData () {
       return this.hasVersions ? this.song.versions[this.currentVersionIndex].song : this.song
     },
-    songText () {
-      return this.songData.text && this.songData.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
-    },
+//    songText () {
+//
+// TODO: update the auto-transpose feature
+//      return this.songData.text && this.songData.text.replace(/%CHORD_([^%]+)%/g, transposeChord(this.transposition))
+//    },
     currentLanguage () {
       return this.hasVersions ? this.song.versions[(this.currentVersionIndex + 1) % 2].language : ''
     },
@@ -150,10 +165,27 @@ h2 {
   /* content: attr(chord); */
   font-weight: bold;
   font-style: normal;
-  position: absolute;
+  /* position: absolute; */
   /* left: 0; */
   bottom: 1.6ex;
-  /* display: inline-block; */
+  display: block;
+}
+
+.song >>> .lyrics {
+  display: block;
+}
+
+.song >>> .segment {
+  display: inline-block;
+}
+
+.song >>> .line {
+  display: block;
+}
+
+.song >>> .block {
+  margin-top: 2ex;
+  margin-bottom: 2ex;
 }
 
 .song >>> .fermata {
@@ -165,29 +197,19 @@ h2 {
   position: relative;
 }
 
-.song >>> .verse::after {
+.song >>> .line:first-child {
+}
+
+.song >>> .line:first-child::before {
+  width: 0px;
+  max-width: 0px;
   content: attr(verse);
+  font-size: 100%;
   font-weight: bold;
-  transform: translateX(-100%);
-  position: absolute;
-  bottom: 0;
-}
-
-.song >>> .chorus {
   position: relative;
-}
-
-.song >>> .chorus::after {
-  content: "R:\00a0";
-  font-weight: bold;
-  transform: translateX(-100%);
-  position: absolute;
-  bottom: 0;
-  /* display: inline-block; */
-}
-
-.song >>> .chorus.alt::after {
-  content: attr(label)"\00a0";
+  overflow: visible;
+  display: inline-block;
+  left: -1.5em;
 }
 
 .song >>> .recitativ-head {

@@ -115,7 +115,7 @@ export default {
   beforeRouteUpdate (to, from, next) {
     this.$store.commit('setSearchKeyword', '')
     next()
-  }
+  },
 }
 </script>
 
