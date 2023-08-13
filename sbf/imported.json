@@ -768,7 +768,7 @@
                 ]
               }
             ],
-            "name": "_pab_310"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -2887,7 +2887,25 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "…  "
+                    "lyrics": "…  \\textbf{Intro:}"
+                  }
+                ]
+              },
+              {
+                "key": 7,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\chord{t 9}{x,p1,p2,p1,p4,n}{D13}  \\chord{t 3}{x,p1,p3,p2,p3,p1}{Cmaj}  \\chord{t 3}{x,p1,p3,p1,p2,p3}{Cmi13}  \\chord{t 3}{p1,x,p2,p2,p1,x}{Gmaj}  \\chord{t 3}{x,p1,p3,p2,p3,p1}{Cmaj}  \\chord{t 5}{x,x,o,p1,p1,p1}{D9}  \\chord{t 5}{x,x,o,p1,p4,p1}{Ami11} "
+                  }
+                ]
+              },
+              {
+                "key": 8,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\chord{t 3}{p1,x,p2,p2,p1,o}{Gmaj13}  \\chord{t 3}{x,p1,p3,p2,p3,p1}{Cmaj}  \\chord{t 3}{x,p1,p3,p1,p2,p3}{Cmi13}  \\chord{t 3}{p1,x,p2,p2,p1,x}{Gmaj}  \\chord{t}{o,p2,o,p1,p3,o}{E7}  \\chord{t}{x,o,p2,o,p2,p2}{A13}  \\chord{t 3}{x,p3,p2,p3,p1,x}{D13}   "
                   }
                 ]
               }
@@ -4146,16 +4164,7 @@
                   {
                     "chord": "E[7]",
                     "key": 3,
-                    "lyrics": "   ~"
-                  }
-                ]
-              },
-              {
-                "key": 5,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "\\large  "
+                    "lyrics": "    \\large  "
                   }
                 ]
               }
@@ -4819,7 +4828,7 @@
                 ]
               }
             ],
-            "name": "_pab_182"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -5890,7 +5899,7 @@
                 ]
               }
             ],
-            "name": "_pab_64"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -8146,10 +8155,10 @@
                   {
                     "chord": "Em",
                     "key": 3,
-                    "lyrics": "  zav\\Fermataup{4}řel jsi "
+                    "lyrics": "  zav"
                   },
                   {
-                    "chord": "H[7]",
+                    "chord": "Fermataup{4}řel jsi \\H[7]",
                     "key": 4,
                     "lyrics": "vrát\\Fermataup{4}ka?"
                   }
@@ -10941,7 +10950,12 @@
                   {
                     "chord": "C",
                     "key": 3,
-                    "lyrics": "pro nic\\CHORD{…}{} za nic ztropí povyk,"
+                    "lyrics": "pro nic"
+                  },
+                  {
+                    "chord": "CHORD{…}",
+                    "key": 4,
+                    "lyrics": " za nic ztropí povyk,"
                   }
                 ]
               },
@@ -11256,7 +11270,12 @@
                   {
                     "chord": "Am[/G]",
                     "key": 5,
-                    "lyrics": "  \\CHORD{…}{}"
+                    "lyrics": "  "
+                  },
+                  {
+                    "chord": "CHORD{…}",
+                    "key": 6,
+                    "lyrics": ""
                   }
                 ]
               },
@@ -12353,7 +12372,12 @@
                   {
                     "chord": "E[7]",
                     "key": 8,
-                    "lyrics": "  \\CHORD{(2$\\times$)}{}  "
+                    "lyrics": "  "
+                  },
+                  {
+                    "chord": "CHORD{(2$\\times$)}",
+                    "key": 9,
+                    "lyrics": "  "
                   }
                 ]
               }
@@ -12586,6 +12610,24 @@
                   {
                     "key": 1,
                     "lyrics": "když prodávám po domech jehly se slovníkem."
+                  }
+                ]
+              },
+              {
+                "key": 5,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\textbf{Intro:}"
+                  }
+                ]
+              },
+              {
+                "key": 6,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\begin{figure}[h!] \\includegraphics[width=365pt, height=100pt ]{res/darmodej.pdf} \\end{figure}  "
                   }
                 ]
               }
@@ -13127,7 +13169,7 @@
                   {
                     "chord": "C",
                     "key": 4,
-                    "lyrics": "áš!  ~"
+                    "lyrics": "áš!   \\emph{(pokračování dle verze z roku 1952)}"
                   }
                 ]
               },
@@ -13136,7 +13178,7 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "\\emph{(pokračování dle verze z roku 1952)}"
+                    "lyrics": "\\rec{Vcelku, to co jsme dnes slyšeli, to není nic nového,"
                   }
                 ]
               },
@@ -13145,21 +13187,12 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "\\rec{Vcelku, to co jsme dnes slyšeli, to není nic nového,"
-                  }
-                ]
-              },
-              {
-                "key": 7,
-                "segments": [
-                  {
-                    "key": 1,
                     "lyrics": "to je stará příhoda, ale zajímavá věc,"
                   }
                 ]
               },
               {
-                "key": 8,
+                "key": 7,
                 "segments": [
                   {
                     "key": 1,
@@ -14698,7 +14731,12 @@
                   {
                     "chord": "D",
                     "key": 1,
-                    "lyrics": "Stou\\CHORD{…}{}pá a klesá tvoje hruď, tak spolehlivě jako rtuť,"
+                    "lyrics": "Stou"
+                  },
+                  {
+                    "chord": "CHORD{…}",
+                    "key": 2,
+                    "lyrics": "pá a klesá tvoje hruď, tak spolehlivě jako rtuť,"
                   }
                 ]
               },
@@ -15040,7 +15078,7 @@
                 ]
               }
             ],
-            "name": "_pab_665"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -16781,22 +16819,7 @@
                   {
                     "chord": "A",
                     "key": 1,
-                    "lyrics": "Byl to ten slavný den, kdy k nám byl zaveden "
-                  },
-                  {
-                    "chord": "E[7]",
-                    "key": 2,
-                    "lyrics": "elek"
-                  },
-                  {
-                    "chord": "E[dim]",
-                    "key": 3,
-                    "lyrics": "trický "
-                  },
-                  {
-                    "chord": "E[7]",
-                    "key": 4,
-                    "lyrics": "proud,"
+                    "lyrics": "Byl to ten slavný den, kdy k nám byl zaveden"
                   }
                 ]
               },
@@ -16806,27 +16829,52 @@
                   {
                     "chord": "E[7]",
                     "key": 1,
-                    "lyrics": "byl to ten slavný den, kdy k nám byl zaveden "
-                  },
-                  {
-                    "chord": "A",
-                    "key": 2,
                     "lyrics": "elek"
                   },
                   {
-                    "chord": "A[dim]",
-                    "key": 3,
+                    "chord": "E[dim]",
+                    "key": 2,
                     "lyrics": "trický "
                   },
                   {
-                    "chord": "A",
-                    "key": 4,
+                    "chord": "E[7]",
+                    "key": 3,
                     "lyrics": "proud,"
                   }
                 ]
               },
               {
                 "key": 3,
+                "segments": [
+                  {
+                    "chord": "E[7]",
+                    "key": 1,
+                    "lyrics": "byl to ten slavný den, kdy k nám byl zaveden"
+                  }
+                ]
+              },
+              {
+                "key": 4,
+                "segments": [
+                  {
+                    "chord": "A",
+                    "key": 1,
+                    "lyrics": "elek"
+                  },
+                  {
+                    "chord": "A[dim]",
+                    "key": 2,
+                    "lyrics": "trický "
+                  },
+                  {
+                    "chord": "A",
+                    "key": 3,
+                    "lyrics": "proud,"
+                  }
+                ]
+              },
+              {
+                "key": 5,
                 "segments": [
                   {
                     "chord": "A[7]",
@@ -16871,7 +16919,7 @@
                 ]
               },
               {
-                "key": 4,
+                "key": 6,
                 "segments": [
                   {
                     "chord": "A[7]",
@@ -16916,7 +16964,7 @@
                 ]
               },
               {
-                "key": 5,
+                "key": 7,
                 "segments": [
                   {
                     "key": 1,
@@ -16925,7 +16973,7 @@
                 ]
               },
               {
-                "key": 6,
+                "key": 8,
                 "segments": [
                   {
                     "key": 1,
@@ -16934,7 +16982,7 @@
                 ]
               },
               {
-                "key": 7,
+                "key": 9,
                 "segments": [
                   {
                     "key": 1,
@@ -16943,7 +16991,7 @@
                 ]
               },
               {
-                "key": 8,
+                "key": 10,
                 "segments": [
                   {
                     "key": 1,
@@ -16952,7 +17000,7 @@
                 ]
               },
               {
-                "key": 9,
+                "key": 11,
                 "segments": [
                   {
                     "key": 1,
@@ -16961,7 +17009,7 @@
                 ]
               },
               {
-                "key": 10,
+                "key": 12,
                 "segments": [
                   {
                     "key": 1,
@@ -16970,7 +17018,7 @@
                 ]
               },
               {
-                "key": 11,
+                "key": 13,
                 "segments": [
                   {
                     "key": 1,
@@ -16979,7 +17027,7 @@
                 ]
               },
               {
-                "key": 12,
+                "key": 14,
                 "segments": [
                   {
                     "key": 1,
@@ -17123,7 +17171,16 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "\\textbf{R:}  "
+                    "lyrics": "\\textbf{R:}  \\textbf{Akordy:}"
+                  }
+                ]
+              },
+              {
+                "key": 16,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\chord{t}{o,p1,p2,o,p2,o}{Edim}  \\chord{t}{x,o,p1,p2,p1,p2}{Adim}  "
                   }
                 ]
               }
@@ -17519,15 +17576,6 @@
                     "lyrics": "vou."
                   }
                 ]
-              },
-              {
-                "key": 3,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
               }
             ],
             "name": "3"
@@ -17640,7 +17688,7 @@
                 ]
               }
             ],
-            "name": "_pab_193"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -19217,6 +19265,15 @@
                     "lyrics": "\\textbf{R:}"
                   }
                 ]
+              },
+              {
+                "key": 6,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\textbf{\\emph{\\large Flétna:}} \\setlength\\parindent{0pt} \\begin{minipage}[m]{\\textwidth} \\begin{music} \\input musixext \\instrumentnumber{1} \\generalsignature1 \\nobarnumbers \\setsize 1\\smallvalue \\hsize 247pt \\generalmeter\\meterC \\nostartrule \\startpiece \\notes\\hsk\\ibl0h{0}\\qb0n\\nbbl0\\qb0l\\tbl0\\qb0n\\ibl1h0\\qb1l\\tbl1\\qb1j\\enotes \\notes\\qlp{g} \\hsk \\ca{f}\\enotes\\bar \\notes \\ibl2h0\\qb2g\\qb2j\\qb2l\\tbl2\\qb2n\\ibl3h{0}\\qb3m\\nbbl3\\qb3n\\tbl3\\qb3m\\cl{l}\\ds\\enotes \\endpiece \\end{music}   "
+                  }
+                ]
               }
             ],
             "name": "4"
@@ -19865,7 +19922,7 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "\\textbf{R:} } ~"
+                    "lyrics": "\\textbf{R:} }  "
                   }
                 ]
               }
@@ -24619,7 +24676,7 @@
                 ]
               }
             ],
-            "name": "_pab_814"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -25909,20 +25966,6 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
-              }
-            ],
-            "name": "_pab_499"
-          },
-          {
-            "lines": [
-              {
-                "key": 1,
-                "segments": [
-                  {
-                    "key": 1,
                     "lyrics": "{}Býval jsem "
                   },
                   {
@@ -26187,7 +26230,12 @@
                   {
                     "chord": "D",
                     "key": 4,
-                    "lyrics": "  \\CHORD{--}{}  "
+                    "lyrics": "  "
+                  },
+                  {
+                    "chord": "CHORD{--}",
+                    "key": 5,
+                    "lyrics": "  "
                   }
                 ]
               }
@@ -26448,7 +26496,12 @@
                   {
                     "chord": "D",
                     "key": 4,
-                    "lyrics": "  \\CHORD{--}{} "
+                    "lyrics": "  "
+                  },
+                  {
+                    "chord": "CHORD{--}",
+                    "key": 5,
+                    "lyrics": " "
                   }
                 ]
               }
@@ -26712,39 +26765,25 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
-              }
-            ],
-            "name": "_pab_776"
-          },
-          {
-            "lines": [
-              {
-                "key": 1,
-                "segments": [
-                  {
-                    "key": 1,
                     "lyrics": "{}"
                   },
                   {
-                    "chord": "A[ ]",
+                    "chord": "A[$(\\sfrac{3}{4})$]",
                     "key": 2,
                     "lyrics": "Horský vzduch čistý jak "
                   },
                   {
-                    "chord": "Dm[ ]",
+                    "chord": "Dm[$(\\sfrac{4}{4})$]",
                     "key": 3,
                     "lyrics": "víno, ve větru "
                   },
                   {
-                    "chord": "A[ ]",
+                    "chord": "A[$(\\sfrac{3}{4})$]",
                     "key": 4,
                     "lyrics": "stmívání,"
                   },
                   {
-                    "chord": "A[ ]",
+                    "chord": "A[$(\\sfrac{3}{4})$]",
                     "key": 5,
                     "lyrics": ""
                   }
@@ -27616,15 +27655,6 @@
                     "lyrics": "žin."
                   }
                 ]
-              },
-              {
-                "key": 5,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
               }
             ],
             "name": "1"
@@ -27740,15 +27770,6 @@
                     "chord": "H[7]",
                     "key": 5,
                     "lyrics": ""
-                  }
-                ]
-              },
-              {
-                "key": 7,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
                   }
                 ]
               }
@@ -27925,7 +27946,7 @@
                 ]
               }
             ],
-            "name": "_pab_956"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -28483,7 +28504,7 @@
                 ]
               }
             ],
-            "name": "_pab_747"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -29491,15 +29512,6 @@
                     "lyrics": "Knock, knock, knockin' on heaven's door"
                   }
                 ]
-              },
-              {
-                "key": 5,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
               }
             ],
             "name": "R"
@@ -30501,20 +30513,6 @@
           "Jaromír Nohavica"
         ],
         "blocks": [
-          {
-            "lines": [
-              {
-                "key": 1,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
-              }
-            ],
-            "name": "_pab_701"
-          },
           {
             "lines": [
               {
@@ -32980,15 +32978,6 @@
                 "key": 7,
                 "segments": [
                   {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
-              },
-              {
-                "key": 8,
-                "segments": [
-                  {
                     "chord": "F",
                     "key": 1,
                     "lyrics": "  "
@@ -33131,56 +33120,51 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "whisper words of wisdom -- let it be. ~"
-                  }
-                ]
-              },
-              {
-                "key": 5,
-                "segments": [
-                  {
-                    "chord": "F",
-                    "key": 1,
-                    "lyrics": "  "
+                    "lyrics": "whisper words of wisdom -- let it be.  "
                   },
                   {
-                    "chord": "C",
+                    "chord": "F",
                     "key": 2,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "Dm",
+                    "chord": "C",
                     "key": 3,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "C",
+                    "chord": "Dm",
                     "key": 4,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "Bb",
+                    "chord": "C",
                     "key": 5,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "F[/A]",
+                    "chord": "Bb",
                     "key": 6,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "G",
+                    "chord": "F[/A]",
                     "key": 7,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "F",
+                    "chord": "G",
                     "key": 8,
                     "lyrics": "  "
                   },
                   {
-                    "chord": "C",
+                    "chord": "F",
                     "key": 9,
+                    "lyrics": "  "
+                  },
+                  {
+                    "chord": "C",
+                    "key": 10,
                     "lyrics": ""
                   }
                 ]
@@ -33196,20 +33180,6 @@
           "The Tokens"
         ],
         "blocks": [
-          {
-            "lines": [
-              {
-                "key": 1,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
-              }
-            ],
-            "name": "_pab_377"
-          },
           {
             "lines": [
               {
@@ -33396,7 +33366,7 @@
                 ]
               }
             ],
-            "name": "_pab_242"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -35230,7 +35200,7 @@
                 ]
               }
             ],
-            "name": "_pab_708"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -35610,7 +35580,7 @@
                 ]
               }
             ],
-            "name": "_pab_272"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -36081,6 +36051,15 @@
                   {
                     "key": 1,
                     "lyrics": "…{} když při mně stál…{} on při mně stál."
+                  }
+                ]
+              },
+              {
+                "key": 6,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\begin{figure}[h!]  \\includegraphics[width=345pt, height=60pt ]{res/jizvu.pdf} \\end{figure}    \\chord{t}{x,p3,p5,p5,p3,p3}{Csus2}  \\chord{t}{p3,x,o,o,p1,p3}{Gsus4}  \\chord{t}{p3,x,o,o,o,p3}{G}  \\chord{t}{x,o,p2,o,p1,p3}{Ami7}  \\chord{t}{p1,x,p3,o,p1,p3}{Fsus2}  \\chord{t}{o,x,p2,o,p1,o}{C/E} "
                   }
                 ]
               }
@@ -38620,12 +38599,12 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "bo Ostrava je region razovity.}  ~"
+                    "lyrics": "bo Ostrava je region razovity.}  "
                   }
                 ]
               }
             ],
-            "name": "_pab_853"
+            "name": "_pab_0"
           }
         ],
         "title": "Milionář"
@@ -40724,15 +40703,6 @@
                     "lyrics": "váš pohled káravej už dávno znám."
                   }
                 ]
-              },
-              {
-                "key": 5,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
-                  }
-                ]
               }
             ],
             "name": "2"
@@ -40826,15 +40796,6 @@
                     "chord": "G",
                     "key": 3,
                     "lyrics": "pták."
-                  }
-                ]
-              },
-              {
-                "key": 6,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "~"
                   }
                 ]
               }
@@ -41516,7 +41477,7 @@
                 ]
               }
             ],
-            "name": "_pab_906"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -45230,7 +45191,7 @@
                 ]
               }
             ],
-            "name": "_pab_876"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -45478,7 +45439,7 @@
                 ]
               }
             ],
-            "name": "_pab_351"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -45670,7 +45631,7 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "}  "
+                    "lyrics": "}  \\textbf{\\large Mezihra:}  \\begin{figure}[h]  \\includegraphics[width=370pt, height=133pt]{res/peterburg.pdf}  \\end{figure}  "
                   }
                 ]
               }
@@ -46084,16 +46045,7 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "} ~"
-                  }
-                ]
-              },
-              {
-                "key": 6,
-                "segments": [
-                  {
-                    "key": 1,
-                    "lyrics": "Tam, kde hy-, tam, kde hy-, tam, kde hynou vl"
+                    "lyrics": "}  Tam, kde hy-, tam, kde hy-, tam, kde hynou vl"
                   },
                   {
                     "chord": "A[7]",
@@ -46103,7 +46055,7 @@
                 ]
               },
               {
-                "key": 7,
+                "key": 6,
                 "segments": [
                   {
                     "key": 1,
@@ -46117,7 +46069,7 @@
                 ]
               },
               {
-                "key": 8,
+                "key": 7,
                 "segments": [
                   {
                     "key": 1,
@@ -46131,7 +46083,7 @@
                 ]
               },
               {
-                "key": 9,
+                "key": 8,
                 "segments": [
                   {
                     "chord": "A[7]",
@@ -46166,7 +46118,7 @@
                 ]
               }
             ],
-            "name": "_pab_9"
+            "name": "_pab_0"
           }
         ],
         "title": "Píseň proti trudomyslnosti"
@@ -46700,8 +46652,9 @@
                 "key": 1,
                 "segments": [
                   {
+                    "chord": "CHORD{\\revrpt",
                     "key": 1,
-                    "lyrics": "\\CHORD{\\revrpt{}}{}  "
+                    "lyrics": "}{}  "
                   },
                   {
                     "chord": "D",
@@ -46721,12 +46674,17 @@
                   {
                     "chord": "Hm",
                     "key": 5,
-                    "lyrics": "  \\CHORD{\\rpt}{}"
+                    "lyrics": "  "
+                  },
+                  {
+                    "chord": "CHORD{\\rpt}",
+                    "key": 6,
+                    "lyrics": ""
                   }
                 ]
               }
             ],
-            "name": "_pab_460"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -48090,7 +48048,7 @@
                 ]
               }
             ],
-            "name": "_pab_962"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -54774,7 +54732,7 @@
                 "segments": [
                   {
                     "key": 1,
-                    "lyrics": "\\begin{figure}[h] \\includegraphics[width=365pt ]{res/sloni3-1.pdf} \\end{figure}  \\begin{figure}[h] \\includegraphics[width=365pt ]{res/sloni3-2.pdf} \\end{figure}  \\noprint{"
+                    "lyrics": "\\textbf{Intro:}  \\begin{figure}[h] \\includegraphics[width=365pt ]{res/sloni3-1.pdf} \\end{figure}  \\begin{figure}[h] \\includegraphics[width=365pt ]{res/sloni3-2.pdf} \\end{figure}  \\noprint{"
                   },
                   {
                     "chord": "Em",
@@ -54954,12 +54912,26 @@
                   {
                     "chord": "Am",
                     "key": 2,
-                    "lyrics": "}vím, kde najdeš kosti sluncem  \\begin{figure}[h!]  \\includegraphics[width=365pt ]{res/sloni3-7.pdf}  \\end{figure} \\noprint{"
+                    "lyrics": "}vím, kde najdeš kosti sluncem"
+                  }
+                ]
+              },
+              {
+                "key": 7,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\begin{figure}[h!]  \\includegraphics[width=365pt ]{res/sloni3-7.pdf}  \\end{figure} \\noprint{"
                   },
                   {
                     "chord": "Em",
+                    "key": 2,
+                    "lyrics": "}vyprah\\noprint{"
+                  },
+                  {
+                    "chord": "CHORD{\\dots}",
                     "key": 3,
-                    "lyrics": "}vyprah\\noprint{\\CHORD{\\dots}{}}lé…{}  \\begin{figure}[h!] \\includegraphics[width=365pt ]{res/sloni3-8.pdf}  \\end{figure} Až nám \\noprint{"
+                    "lyrics": "}lé…{}  \\begin{figure}[h!] \\includegraphics[width=365pt ]{res/sloni3-8.pdf}  \\end{figure} Až nám \\noprint{"
                   },
                   {
                     "chord": "Em",
@@ -54984,7 +54956,7 @@
                 ]
               },
               {
-                "key": 7,
+                "key": 8,
                 "segments": [
                   {
                     "key": 1,
@@ -55008,7 +54980,7 @@
                 ]
               },
               {
-                "key": 8,
+                "key": 9,
                 "segments": [
                   {
                     "key": 1,
@@ -55037,7 +55009,7 @@
                 ]
               },
               {
-                "key": 9,
+                "key": 10,
                 "segments": [
                   {
                     "key": 1,
@@ -55056,17 +55028,26 @@
                   {
                     "chord": "H[7]",
                     "key": 4,
-                    "lyrics": "}řád, \\begin{figure}[h!]  \\includegraphics[scale=0.65 ]{res/sloni3-10.pdf}  \\end{figure} napo\\noprint{"
+                    "lyrics": "}řád,"
+                  }
+                ]
+              },
+              {
+                "key": 11,
+                "segments": [
+                  {
+                    "key": 1,
+                    "lyrics": "\\begin{figure}[h!]  \\includegraphics[scale=0.65 ]{res/sloni3-10.pdf}  \\end{figure} napo\\noprint{"
                   },
                   {
                     "chord": "Em",
-                    "key": 5,
+                    "key": 2,
                     "lyrics": "}řád. "
                   }
                 ]
               }
             ],
-            "name": "_pab_535"
+            "name": "_pab_0"
           }
         ],
         "title": "Sloní hřbitovy"
@@ -55106,7 +55087,7 @@
                 ]
               }
             ],
-            "name": "_pab_796"
+            "name": "_pab_0"
           },
           {
             "lines": [
@@ -56198,7 +56179,7 @@
                   {
                     "chord": "Am",
                     "key": 3,
-                    "lyrics": "den! ~"
+                    "lyrics": "den! "
                   }
                 ]
               }
@@ -61624,7 +61605,7 @@
                 ]
               }
             ],
-            "name": "_pab_335"
+            "name": "_pab_0"
           }
         ],
         "title": "Trezor"
@@ -67058,7 +67039,12 @@
                   {
                     "chord": "Hm",
                     "key": 2,
-                    "lyrics": "koupeš, \\CHORD{…}{}umýváš si záda,"
+                    "lyrics": "koupeš, "
+                  },
+                  {
+                    "chord": "CHORD{…}",
+                    "key": 3,
+                    "lyrics": "umýváš si záda,"
                   }
                 ]
               },
@@ -68144,16 +68130,21 @@
                   {
                     "chord": "C",
                     "key": 1,
-                    "lyrics": "Já-á-á-á \\CHORD{--}{}už dvanáct "
+                    "lyrics": "Já-á-á-á "
+                  },
+                  {
+                    "chord": "CHORD{--}",
+                    "key": 2,
+                    "lyrics": "už dvanáct "
                   },
                   {
                     "chord": "G",
-                    "key": 2,
+                    "key": 3,
                     "lyrics": "dní svůj obraz "
                   },
                   {
                     "chord": "D",
-                    "key": 3,
+                    "key": 4,
                     "lyrics": "nevšední,"
                   }
                 ]
@@ -68862,7 +68853,7 @@
                 ]
               }
             ],
-            "name": "_pab_51"
+            "name": "_pab_0"
           },
           {
             "lines": [
