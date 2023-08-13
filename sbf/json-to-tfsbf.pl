@@ -3,15 +3,16 @@
 use utf8;
 use common::sense;
 use Data::Dump;
-use List::Util qw/max/;
 use JSON;
 
 use FindBin;
 use lib "$FindBin::Bin";
 use TFSBF;
 
-binmode STDOUT, ":utf8" or die $!;
-
 open F, "<", "songbook.json" or die $!;
+open G, ">:utf8", "songbook.tfsbf" or die $!;
 undef local $/;
-print TFSBF::from_json decode_json <F>;
+
+print G TFSBF::from_obj decode_json <F>;
+close G;
+close F;
